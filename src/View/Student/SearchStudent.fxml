@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Student.ControllerSearchStudent">
+   <children>
+      <Label layoutX="143.0" layoutY="21.0" text="Szukaj studenta" />
+      <Label layoutX="29.0" layoutY="74.0" text="Imie" />
+      <Label layoutX="29.0" layoutY="116.0" text="Nazwisko" />
+      <Label layoutX="310.0" layoutY="21.0" text="Kierunek" />
+      <Label layoutX="298.0" layoutY="87.0" text="Tryb" />
+      <Label layoutX="506.0" layoutY="30.0" text="Rok" />
+      <Label layoutX="437.0" layoutY="96.0" text="Semestr" />
+      <TableView layoutX="26.0" layoutY="184.0" prefHeight="173.0" prefWidth="515.0">
+        <columns>
+          <TableColumn fx:id="colName" prefWidth="75.0" text="Imie" />
+          <TableColumn fx:id="colSurname" prefWidth="75.0" text="Nazwisko" />
+            <TableColumn fx:id="colTitleStudy" prefWidth="75.0" text="Kierunek" />
+            <TableColumn fx:id="colYear" prefWidth="75.0" text="Rok" />
+            <TableColumn fx:id="colPeriod" prefWidth="107.0" text="Semestr" />
+            <TableColumn prefWidth="107.0" />
+        </columns>
+      </TableView>
+      <TextField fx:id="fieldName" layoutX="81.0" layoutY="70.0" />
+      <TextField fx:id="fieldSurname" layoutX="97.0" layoutY="112.0" />
+      <ChoiceBox fx:id="choiceBoxTitleStudy" layoutX="246.0" layoutY="47.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceBoxYear" layoutX="418.0" layoutY="58.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceBoxPeriod" layoutX="429.0" layoutY="126.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceBoxMode" layoutX="257.0" layoutY="115.0" prefWidth="150.0" />
+      <Button fx:id="btnSearch" layoutX="129.0" layoutY="151.0" mnemonicParsing="false" text="Szukaj" />
+      <Button fx:id="btnExit" layoutX="213.0" layoutY="151.0" mnemonicParsing="false" text="Wyjdź" />
+   </children>
+</Pane>

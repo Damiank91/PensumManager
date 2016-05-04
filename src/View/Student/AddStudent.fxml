@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Student.ControllerAddStudent">
+    <children>
+        <Label layoutX="211.0" layoutY="29.0" text="Dodaj studenta" />
+        <Label layoutX="46.0" layoutY="90.0" text="Imie" />
+        <Label layoutX="46.0" layoutY="127.0" text="Nazwisko" />
+        <Label layoutX="46.0" layoutY="234.0" text="Płeć" />
+        <Label layoutX="351.0" layoutY="90.0" text="Kierunek" />
+        <Label layoutX="362.0" layoutY="157.0" text="Tryb" />
+        <Button fx:id="btnSave" layoutX="86.0" layoutY="339.0" mnemonicParsing="false" text="Zapisz" />
+        <Button fx:id="btnClearFields" layoutX="185.0" layoutY="351.0" mnemonicParsing="false" text="Wyczyść pola" />
+        <Button fx:id="btnExit" layoutX="315.0" layoutY="351.0" mnemonicParsing="false" text="Wyjdź" />
+        <TextField fx:id="fieldName" layoutX="127.0" layoutY="86.0" />
+        <TextField fx:id="fieldSurname" layoutX="123.0" layoutY="123.0" />
+        <ChoiceBox fx:id="choiceBoxMode" layoutX="420.0" layoutY="153.0" prefWidth="150.0" />
+        <RadioButton fx:id="radioBtnMale" layoutX="126.0" layoutY="234.0" mnemonicParsing="false" text="Mężczyzna">
+         <toggleGroup>
+            <ToggleGroup fx:id="gender" />
+         </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="radioBtnFemale" layoutX="207.0" layoutY="234.0" mnemonicParsing="false" text="Kobieta" toggleGroup="$gender" />
+      <ChoiceBox fx:id="choiceBoxTitleStudy" layoutX="420.0" layoutY="86.0" prefWidth="150.0" />
+      <Label layoutX="362.0" layoutY="192.0" text="Rok" />
+      <Label layoutX="353.0" layoutY="237.0" text="Semestr" />
+      <ChoiceBox fx:id="choiceBoxYear" layoutX="420.0" layoutY="193.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceBoxPeriod" layoutX="420.0" layoutY="242.0" prefWidth="150.0" />
+    </children>
+</Pane>

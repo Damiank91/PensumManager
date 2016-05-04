@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Employee.ControllerAddEmployee">
+   <children>
+      <Label layoutX="211.0" layoutY="29.0" text="Dodaj pracownika" />
+      <Label layoutX="46.0" layoutY="90.0" text="Imie" />
+      <Label layoutX="46.0" layoutY="127.0" text="Nazwisko" />
+      <Label layoutX="46.0" layoutY="169.0" text="Data urodzenia" />
+      <Label layoutX="46.0" layoutY="197.0" text="Płeć" />
+      <Label layoutX="46.0" layoutY="233.0" text="Kierownik" />
+      <Label layoutX="46.0" layoutY="273.0" text="Katedra" />
+      <Button fx:id="btnSave" layoutX="71.0" layoutY="351.0" mnemonicParsing="false" text="Zapisz" />
+      <Button fx:id="btnClearField" layoutX="168.0" layoutY="351.0" mnemonicParsing="false" text="Wyczyść pola" />
+      <Button fx:id="btnExit" layoutX="282.0" layoutY="351.0" mnemonicParsing="false" text="Wyjdź" />
+      <Label layoutX="341.0" layoutY="46.0" text="Dodaj przedmiot do listy prowadzącego" />
+      <Label layoutX="385.0" layoutY="148.0" text="Przedmioty pracownika" />
+      <ChoiceBox fx:id="choiceSubject" layoutX="401.0" layoutY="71.0" prefWidth="150.0" />
+      <ListView fx:id="subjectList" layoutX="361.0" layoutY="173.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextField fx:id="fieldName" layoutX="127.0" layoutY="86.0" />
+      <TextField fx:id="fieldSurname" layoutX="123.0" layoutY="123.0" />
+      <ChoiceBox fx:id="choiceCathedral" layoutX="122.0" layoutY="269.0" prefWidth="150.0" />
+      <RadioButton fx:id="choiceManagerTrue" layoutX="127.0" layoutY="233.0" mnemonicParsing="false" text="Tak">
+         <toggleGroup>
+            <ToggleGroup fx:id="manager" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="choiceManagerFalse" layoutX="208.0" layoutY="233.0" mnemonicParsing="false" text="Nie" toggleGroup="$manager" />
+      <RadioButton fx:id="choiceGenderMale" layoutX="127.0" layoutY="197.0" mnemonicParsing="false" text="Mężczyzna">
+         <toggleGroup>
+            <ToggleGroup fx:id="gender" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="choiceGenderFemale" layoutX="208.0" layoutY="197.0" mnemonicParsing="false" text="Kobieta" toggleGroup="$gender" />
+      <DatePicker fx:id="bornDate" layoutX="141.0" layoutY="165.0" />
+      <Button fx:id="btnAddSubjectToTable" layoutX="421.0" layoutY="111.0" mnemonicParsing="false" text="Dodaj" />
+      <Label layoutX="43.0" layoutY="301.0" prefHeight="17.0" prefWidth="48.0" text="Pensum" />
+      <TextField fx:id="fieldPensum" layoutX="121.0" layoutY="297.0" prefHeight="25.0" prefWidth="41.0" />
+   </children>
+</Pane>

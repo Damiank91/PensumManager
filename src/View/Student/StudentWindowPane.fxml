@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Student.ControllerStudentWindow">
+   <children>
+      <Label layoutX="265.0" layoutY="37.0" text="Studenci" />
+      <Button fx:id="btnSearchStudent" layoutX="300.0" layoutY="152.0" mnemonicParsing="false" text="Wyświetl Studenta" />
+      <Button fx:id="btnAddStudent" layoutX="68.0" layoutY="152.0" mnemonicParsing="false" text="Dodaj studenta" />
+      <Button fx:id="btnExit" layoutX="216.0" layoutY="252.0" mnemonicParsing="false" text="Wyjdz" />
+   </children>
+</Pane>
