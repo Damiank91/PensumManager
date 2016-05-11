@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="225.0" layoutY="30.0" text="Sale" />
+      <Button layoutX="117.0" layoutY="92.0" mnemonicParsing="false" text="Wyświetl sale" />
+      <Button layoutX="117.0" layoutY="163.0" mnemonicParsing="false" text="Sprawdz dostępność" />
+      <Button layoutX="236.0" layoutY="262.0" mnemonicParsing="false" text="Wyjdź" />
+   </children>
+</Pane>

@@ -2,7 +2,7 @@ package Controller.Employee;
 
 
 import Controller.Main;
-import Model.Employee.DriverSqlEmployee;
+import Model.ConnectSql.DriverSqlEmployee;
 import Model.Employee.Employee;
 import View.Employee.MessagePanelEmployee;
 import javafx.collections.FXCollections;

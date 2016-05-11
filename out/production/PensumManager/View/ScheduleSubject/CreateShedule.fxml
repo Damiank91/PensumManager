@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="473.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="905.0" layoutY="38.0" text="Prowadzący" />
+      <Label layoutX="905.0" layoutY="102.0" text="Przedmiot" />
+      <Label layoutX="892.0" layoutY="152.0" text="Dzień tygodnia" />
+      <Label layoutX="898.0" layoutY="200.0" text="Początek zajęć" />
+      <Label layoutX="905.0" layoutY="242.0" text="Czas trwania" />
+      <Label layoutX="905.0" layoutY="285.0" text="Sala" />
+      <Label layoutX="900.0" layoutY="327.0" text="Rodzaj zajęć" />
+      <Label layoutX="905.0" layoutY="369.0" text="Grupa studencka" />
+      <ChoiceBox layoutX="858.0" layoutY="65.0" prefWidth="150.0" />
+      <ChoiceBox layoutX="858.0" layoutY="119.0" prefWidth="150.0" />
+      <ChoiceBox layoutX="868.0" layoutY="169.0" prefWidth="150.0" />
+      <ChoiceBox layoutX="868.0" layoutY="217.0" prefWidth="150.0" />
+      <ChoiceBox layoutX="868.0" layoutY="259.0" prefWidth="150.0" />
+      <ChoiceBox layoutX="868.0" layoutY="302.0" prefWidth="150.0" />
+      <ChoiceBox layoutX="868.0" layoutY="345.0" prefWidth="150.0" />
+      <ChoiceBox layoutX="874.0" layoutY="395.0" prefWidth="150.0" />
+      <Button layoutX="842.0" layoutY="432.0" mnemonicParsing="false" text="Zatwierdź" />
+      <Button layoutX="933.0" layoutY="432.0" mnemonicParsing="false" text="Wyczyść pola" />
+      <TableView layoutX="23.0" layoutY="52.0" prefHeight="381.0" prefWidth="759.0">
+        <columns>
+          <TableColumn prefWidth="57.0" text="8.00" />
+          <TableColumn prefWidth="57.0" text="9.00" />
+            <TableColumn prefWidth="57.0" text="10.00" />
+            <TableColumn prefWidth="75.0" text="11.00" />
+            <TableColumn prefWidth="57.0" text="12.00" />
+            <TableColumn prefWidth="57.0" text="13.00" />
+            <TableColumn prefWidth="57.0" text="14.00" />
+            <TableColumn prefWidth="57.0" text="15.00" />
+            <TableColumn prefWidth="57.0" text="16.00" />
+            <TableColumn prefWidth="57.0" text="17.00" />
+            <TableColumn prefWidth="57.0" text="18.00" />
+            <TableColumn prefWidth="57.0" text="19.00" />
+            <TableColumn prefWidth="57.0" text="20.00" />
+        </columns>
+      </TableView>
+   </children>
+</Pane>

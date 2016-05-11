@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="399.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Employee.ControllerEditEmployee">
+   <children>
+      <Label layoutX="174.0" layoutY="24.0" text="Edycja pracownika" />
+      <Label layoutX="62.0" layoutY="69.0" text="Imie" />
+      <Label layoutX="62.0" layoutY="112.0" text="Nazwisko" />
+      <Label layoutX="62.0" layoutY="159.0" text="Data urodzenia" />
+      <Label layoutX="62.0" layoutY="210.0" text="Płeć" />
+      <Label layoutX="62.0" layoutY="248.0" text="Kierownik" />
+      <Label layoutX="62.0" layoutY="290.0" text="Katedra" />
+      <Label layoutX="62.0" layoutY="338.0" text="Pensum" />
+      <Button fx:id="btnSave" layoutX="82.0" layoutY="412.0" mnemonicParsing="false" onAction="#editEmployee" text="Zapisz" />
+      <Button fx:id="btnExit" layoutX="174.0" layoutY="412.0" mnemonicParsing="false" onAction="#closeButtonAction" text="Wyjdź" />
+      <TextField fx:id="fieldName" layoutX="160.0" layoutY="65.0" />
+      <TextField fx:id="fieldSurname" layoutX="160.0" layoutY="108.0" />
+      <DatePicker fx:id="bornDate" layoutX="160.0" layoutY="155.0" />
+      <RadioButton fx:id="choiceGenderMale" layoutX="145.0" layoutY="210.0" mnemonicParsing="false" text="Mężczyzna">
+         <toggleGroup>
+            <ToggleGroup fx:id="gender" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="choiceGenderFemale" layoutX="265.0" layoutY="210.0" mnemonicParsing="false" text="Kobiera" toggleGroup="$gender" />
+      <RadioButton fx:id="choiceManagerTrue" layoutX="145.0" layoutY="248.0" mnemonicParsing="false" text="Tak">
+         <toggleGroup>
+            <ToggleGroup fx:id="manager" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="choiceManagerFalse" layoutX="255.0" layoutY="248.0" mnemonicParsing="false" text="Nie" toggleGroup="$manager" />
+      <TextField fx:id="fieldPensum" layoutX="160.0" layoutY="343.0" />
+      <ChoiceBox fx:id="choiceCathedral" layoutX="157.0" layoutY="295.0" prefWidth="150.0" />
+   </children>
+</Pane>

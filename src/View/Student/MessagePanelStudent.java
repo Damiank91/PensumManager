@@ -1,20 +1,20 @@
-package View.Employee;
+package View.Student;
 
 import javafx.scene.control.Alert;
 
 /**
- * Created by Damian on 2016-04-25.
+ * Created by Damian on 2016-05-07.
  */
-public class MessagePanelEmployee {
+public class MessagePanelStudent {
 
-    public MessagePanelEmployee(){
+    public MessagePanelStudent(){
 
     }
 
-    public void addEmployeNoChoice(String contentText){
+    public void addStudentNoChoice(String contentText){
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("OstrzeÅ¼enie");
-        alert.setHeaderText("WystÄ…piÅ‚ bÅ‚Ä…d podczas zapisu pracownika");
+        alert.setTitle("Ostrze¿enie");
+        alert.setHeaderText("Wyst¹pi³ b³¹d podczas zapisu studenta");
         alert.setContentText(contentText);
         alert.showAndWait();
     }
@@ -34,6 +34,4 @@ public class MessagePanelEmployee {
         alert.setContentText(messageText);
         alert.showAndWait();
     }
-
-
 }

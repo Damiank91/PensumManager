@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Employee.ControllerSearchEmployee">
+    <children>
+        <Label layoutX="211.0" layoutY="29.0" text="Szukaj Pracownika" />
+        <Label layoutX="46.0" layoutY="90.0" text="Imie" />
+        <Label layoutX="46.0" layoutY="127.0" text="Nazwisko" />
+        <Label layoutX="295.0" layoutY="90.0" text="Katedra" />
+        <Button fx:id="btnSearch" layoutX="322.0" layoutY="148.0" mnemonicParsing="false" onAction="#addValueToTable" text="Szukaj" />
+        <Button fx:id="btnExit" layoutX="506.0" layoutY="148.0" mnemonicParsing="false" onAction="#selectBtnExit" text="Wyjdź" />
+        <TextField fx:id="fieldName" layoutX="123.0" layoutY="86.0" />
+        <TextField fx:id="fieldSurname" layoutX="123.0" layoutY="123.0" prefHeight="25.0" prefWidth="149.0" />
+        <ChoiceBox fx:id="choiceCathedral" layoutX="405.0" layoutY="86.0" prefWidth="150.0" />
+      <TableView fx:id="searchTable" layoutX="23.0" layoutY="198.0" prefHeight="169.0" prefWidth="539.0">
+        <columns>
+            <TableColumn fx:id="idEmployeeColumn" prefWidth="106.0" text="Id pracownika" />
+          <TableColumn fx:id="nameColumn" prefWidth="108.0" text="Imie" />
+          <TableColumn fx:id="surnameColumn" prefWidth="131.0" text="Nazwisko" />
+            <TableColumn fx:id="cathedralColumn" prefWidth="193.0" text="Katedra" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnEdit" layoutX="387.0" layoutY="148.0" mnemonicParsing="false" onAction="#initializeEditWindow" text="Edytuj" />
+      <Button fx:id="btnDelete" layoutX="445.0" layoutY="148.0" mnemonicParsing="false" onAction="#deleteEmployee" text="Usuń" />
+    </children>
+</Pane>

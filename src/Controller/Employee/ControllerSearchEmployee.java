@@ -1,7 +1,7 @@
 package Controller.Employee;
 
 import Controller.Main;
-import Model.Employee.DriverSqlEmployee;
+import Model.ConnectSql.DriverSqlEmployee;
 import Model.Employee.EmployeeTable;
 
 import javafx.collections.FXCollections;

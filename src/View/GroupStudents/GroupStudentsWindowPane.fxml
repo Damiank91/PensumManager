@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.">
+   <children>
+      <Label layoutX="234.0" layoutY="75.0" text="Grupy studencje/ zajęciowe" />
+      <Button fx:id="btnShowGroup" layoutX="115.0" layoutY="92.0" mnemonicParsing="false" text="Wyświetl grupę" />
+      <Button fx:id="btnAddGroup" layoutX="100.0" layoutY="147.0" mnemonicParsing="false" text="Dodaj grupę" />
+      <Button fx:id="btnDeleteGroup" layoutX="113.0" layoutY="188.0" mnemonicParsing="false" text="Usuń grupę" />
+      <Button fx:id="btnEditGroup" layoutX="107.0" layoutY="228.0" mnemonicParsing="false" text="edytuj grupę" />
+      <Button fx:id="btnExit" layoutX="222.0" layoutY="281.0" mnemonicParsing="false" text="wyjdź" />
+   </children>
+</Pane>

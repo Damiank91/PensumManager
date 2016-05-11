@@ -1,5 +1,7 @@
-package Model.Employee;
+package Model.ConnectSql;
 
+import Model.Employee.Employee;
+import Model.Employee.EmployeeTable;
 import View.Employee.MessagePanelEmployee;
 
 import java.sql.Connection;
@@ -13,9 +15,7 @@ import java.util.Map;
  * Created by Damian on 2016-04-21.
  */
 public class DriverSqlEmployee {
-    private static final String DB_URL="jdbc:mysql://localhost:3306/pensum_menager";
-    private static final String USER = "root";
-    private static final String PASSWORD = "root";
+
     private Connection myConnect;
     private PreparedStatement preparedStatement;
     private MessagePanelEmployee messagePanelEmployee;
@@ -31,7 +31,7 @@ public class DriverSqlEmployee {
      */
     private void connectWithDataBase(){
         try{
-            myConnect = DriverManager.getConnection(DB_URL,USER, PASSWORD);
+            myConnect = DriverManager.getConnection(ConnectSql.getDbUrl(),ConnectSql.getUSER(), ConnectSql.getPASSWORD());
             messagePanelEmployee = new MessagePanelEmployee();
         } catch(Exception ex){
             System.err.println("nie można połączyć się z bazą");
@@ -174,6 +174,8 @@ public class DriverSqlEmployee {
             preparedStatement.executeUpdate();
         }catch (Exception ex){
             System.err.println(ex);
+        } finally {
+            closeDriverSql();
         }
     }
 
