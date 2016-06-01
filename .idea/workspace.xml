@@ -2,37 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f2250e2-da69-448e-8986-06da77508dc4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Controller/ScheduleSubject/ControllerCreateSchedule.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/View/ScheduleSubject/CreateSchedule.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Model/ConnectSql/DriverSqlScheduleSubject.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/View/ScheduleSubject/MessagePanelScheduleSubject.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/View/ScheduleSubject/ScheduleSubjectStyle.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Model/Subject/Subject.java" />
-      <change type="DELETED" beforePath="C:\Users\Damian\IdeaProjects\PensumManager\out\production\PensumManager\Controller\Room\ControllerRoomWindow.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Damian\IdeaProjects\PensumManager\out\production\PensumManager\Controller\ScheduleSubject\ControllerCreateShedule.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Damian\IdeaProjects\PensumManager\out\production\PensumManager\View\Room\RoomWindowPane.fxml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Damian\IdeaProjects\PensumManager\out\production\PensumManager\View\ScheduleSubject\CreateShedule.fxml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Damian\IdeaProjects\PensumManager\src\Controller\ScheduleSubject\ControllerCreateShedule.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Damian\IdeaProjects\PensumManager\src\View\ScheduleSubject\CreateShedule.fxml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PensumManager/Controller/Employee/ControllerAddEmployee.class" afterPath="$PROJECT_DIR$/out/production/PensumManager/Controller/Employee/ControllerAddEmployee.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PensumManager/Controller/Student/ControllerAddStudent.class" afterPath="$PROJECT_DIR$/out/production/PensumManager/Controller/Student/ControllerAddStudent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PensumManager/Controller/ControllerMainWindow.class" afterPath="$PROJECT_DIR$/out/production/PensumManager/Controller/ControllerMainWindow.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PensumManager/Controller/ScheduleSubject/ControllerScheduleSubjectWindow.class" afterPath="$PROJECT_DIR$/out/production/PensumManager/Controller/ScheduleSubject/ControllerScheduleSubjectWindow.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PensumManager/Controller/Student/ControllerSearchStudent.class" afterPath="$PROJECT_DIR$/out/production/PensumManager/Controller/Student/ControllerSearchStudent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PensumManager/Model/ConnectSql/DriverSqlEmployee.class" afterPath="$PROJECT_DIR$/out/production/PensumManager/Model/ConnectSql/DriverSqlEmployee.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PensumManager/Model/ConnectSql/DriverSqlStudent.class" afterPath="$PROJECT_DIR$/out/production/PensumManager/Model/ConnectSql/DriverSqlStudent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PensumManager/Controller/Main.class" afterPath="$PROJECT_DIR$/out/production/PensumManager/Controller/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PensumManager/View/Employee/AddEmployee.fxml" afterPath="$PROJECT_DIR$/out/production/PensumManager/View/Employee/AddEmployee.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/Employee/AddEmployee.fxml" afterPath="$PROJECT_DIR$/src/View/Employee/AddEmployee.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Employee/ControllerAddEmployee.java" afterPath="$PROJECT_DIR$/src/Controller/Employee/ControllerAddEmployee.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/ControllerMainWindow.java" afterPath="$PROJECT_DIR$/src/Controller/ControllerMainWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/ScheduleSubject/ControllerScheduleSubjectWindow.java" afterPath="$PROJECT_DIR$/src/Controller/ScheduleSubject/ControllerScheduleSubjectWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/ConnectSql/DriverSqlEmployee.java" afterPath="$PROJECT_DIR$/src/Model/ConnectSql/DriverSqlEmployee.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Main.java" afterPath="$PROJECT_DIR$/src/Controller/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PensumManager/View/ScheduleSubject/ScheduleSubjectWindowPane.fxml" afterPath="$PROJECT_DIR$/out/production/PensumManager/View/ScheduleSubject/ScheduleSubjectWindowPane.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/ScheduleSubject/ScheduleSubjectWindowPane.fxml" afterPath="$PROJECT_DIR$/src/View/ScheduleSubject/ScheduleSubjectWindowPane.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PensumManager/View/Student/SearchStudent.fxml" afterPath="$PROJECT_DIR$/out/production/PensumManager/View/Student/SearchStudent.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="PensumManager.iws" />
@@ -55,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ControllerCreateSchedule.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ControllerCreateSchedule.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/ScheduleSubject/ControllerCreateSchedule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.43405676">
+              <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControllerAddEmployee.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ControllerAddEmployee.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/Employee/ControllerAddEmployee.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36894825">
-              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding>
                 <element signature="docComment;method#addCathedralToChoiceBox#0;class#ControllerAddEmployee#0" expanded="false" />
               </folding>
@@ -637,7 +606,13 @@
       <option name="project" value="LOCAL" />
       <updated>1462989144481</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added Employee and Student module">
+      <created>1464803310358</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1464803310358</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -646,11 +621,12 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32695374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16746412" sideWeight="0.5060514" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23809524" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23763955" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26626325" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -659,7 +635,6 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32695374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1030,6 +1005,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="73" column="64" selection-start-line="73" selection-start-column="64" selection-end-line="73" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1037,6 +1013,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5459098">
           <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1044,6 +1023,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31886476">
           <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1052,16 +1032,6 @@
         <state vertical-scroll-proportion="0.14190318">
           <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ScheduleSubject/ControllerCreateSchedule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1101,10 +1071,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/Employee/ControllerAddEmployee.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36894825">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding>
             <element signature="docComment;method#addCathedralToChoiceBox#0;class#ControllerAddEmployee#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ScheduleSubject/ControllerCreateSchedule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43405676">
+          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
