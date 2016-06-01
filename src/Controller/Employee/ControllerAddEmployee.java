@@ -4,12 +4,20 @@ package Controller.Employee;
 import Controller.Main;
 import Model.ConnectSql.DriverSqlEmployee;
 import Model.Employee.Employee;
+import Model.Subject.Subject;
 import View.Employee.MessagePanelEmployee;
+import com.sun.xml.internal.ws.wsdl.writer.document.Message;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 
 import java.net.URL;
@@ -18,17 +26,18 @@ import java.util.ResourceBundle;
 
 public class ControllerAddEmployee implements Initializable {
 
-    /**
-     * co trzeba jeszcze dodac:
-     * 1. metoda wyświetlająca katedre
-     * 2. metoda wyświetlająca przedmioty
-     * 3. metoda potrafiąca dodać przedmioty do tabeli (tabela powinna miec przycis "usun" jak ktos zle doda przedmiot
-     * 4. metoda zapisująca dane w bazie
-     */
-
 
     @FXML
-    private ListView<?> subjectList;
+    private TableView<Subject> subjectTable;
+
+    @FXML
+    private TableColumn<Subject, Integer> subjectIdTable;
+
+    @FXML
+    private TableColumn<Subject, String> subjectNameTable;
+
+    @FXML
+    private Button btnDeleteValueTable;
 
     @FXML
     private Button btnClearField;
@@ -78,18 +87,45 @@ public class ControllerAddEmployee implements Initializable {
     @FXML
     private TextField fieldPensum;
 
+    @FXML
+    void addSubjectTable(ActionEvent event) {
+        if(choiceSubject.getValue() == null){
+            messagePanelEmployee.showErrorMessage("Nie wybrano prezdmiotu dla prowadzącego!");
+        } else {
+            addSubjectToTable();
+
+        }
+    }
+
+    @FXML
+    void deleteSubjectTable(ActionEvent event) {
+        Subject selectSubject = subjectTable.getSelectionModel().getSelectedItem();
+
+        if(selectSubject == null){
+            messagePanelEmployee.showErrorMessage("Nie wybrano przedmiotu do usunięcia");
+        } else {
+
+            subjectArrayList.remove(selectSubject);
+            refreshTable();
+        }
+    }
+
+
     MessagePanelEmployee messagePanelEmployee = new MessagePanelEmployee();
     DriverSqlEmployee driverSqlEmployee = new DriverSqlEmployee();
     ArrayList<String> subjectListChoiceBox;
     ArrayList<String> cathedralListChoiceBox;
+    ArrayList<Subject> subjectArrayList = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addCathedralToChoiceBox();
-        addSubjectToChoiceBox();
         btnSave.setOnAction(event -> setDataInBase());
         btnClearField.setOnAction(event -> clearFields());
         btnExit.setOnAction(event -> backToMainWindowScene());
+        choiceCathedral.setOnAction(event -> addSubjectToChoiceBox(choiceCathedral.getValue()));
+
+
     }
 
     /**
@@ -105,6 +141,8 @@ public class ControllerAddEmployee implements Initializable {
                 ,getCathedral()
                 ,getFieldPensum());
         driverSqlEmployee.insertEmployee(employee);
+        int idEmloyee = driverSqlEmployee.getEmployeeByValue(employee);
+        driverSqlEmployee.saveEmloyeeSubject(subjectArrayList, idEmloyee);
         clearFields();
         messagePanelEmployee.showInformationMessage("Nowy pracownik został zapisany!");
     }
@@ -228,12 +266,29 @@ public class ControllerAddEmployee implements Initializable {
     /**
      * metoda pobiera z bazy przedmioty do choiceBox
      */
-    private void addSubjectToChoiceBox(){
+    private void addSubjectToChoiceBox(String choiceCathedral){
         subjectListChoiceBox = new ArrayList<>();
         choiceSubject.setTooltip(new Tooltip("Wybierz przedmiot"));
-        subjectListChoiceBox = driverSqlEmployee.getSubjectList();
+        subjectListChoiceBox = driverSqlEmployee.getSubjectList(choiceCathedral);
         ObservableList<String> subjectObservableList = FXCollections.observableArrayList(subjectListChoiceBox);
         choiceSubject.setItems(subjectObservableList);
+    }
+
+    private void addSubjectToTable(){
+
+        Subject subject = driverSqlEmployee.getSubjectListByName(choiceSubject.getValue());
+        subjectArrayList.add(subject);
+        ObservableList<Subject> data = FXCollections.observableArrayList(subjectArrayList);
+        subjectTable.setItems(data);
+        subjectIdTable.setCellValueFactory(new PropertyValueFactory<Subject, Integer>("id_subject"));
+        subjectNameTable.setCellValueFactory(new PropertyValueFactory<Subject, String>("name_subject"));
+    }
+
+    private void refreshTable(){
+        ObservableList<Subject> data = FXCollections.observableArrayList(subjectArrayList);
+        subjectTable.setItems(data);
+        subjectIdTable.setCellValueFactory(new PropertyValueFactory<Subject, Integer>("id_subject"));
+        subjectNameTable.setCellValueFactory(new PropertyValueFactory<Subject, String>("name_subject"));
     }
 
 
@@ -251,6 +306,8 @@ public class ControllerAddEmployee implements Initializable {
         choiceManagerFalse.setSelected(false);
         choiceManagerTrue.setSelected(false);
         fieldPensum.setText("");
+        subjectArrayList = null;
+        subjectTable.setItems(null);
     }
 
 

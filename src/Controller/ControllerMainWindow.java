@@ -33,6 +33,7 @@ public class ControllerMainWindow implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         btnEmployee.setOnAction(event -> Main.setSceneEmployeeWindow());
         btnStudents.setOnAction(event -> Main.setSceneStudentWindow());
+        btnScheduleList.setOnAction(event -> Main.setSceneScheduleWindow());
 
     }
 }

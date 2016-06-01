@@ -4,14 +4,12 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ScheduleSubject.ControllerScheduleSubjectWindow">
    <children>
       <Label layoutX="224.0" layoutY="65.0" text="Plan zajęć" />
-      <Button layoutX="96.0" layoutY="118.0" mnemonicParsing="false" text="Ułóż plan" />
-      <Button layoutX="87.0" layoutY="175.0" mnemonicParsing="false" text="Edytuj plan" />
-      <Button layoutX="96.0" layoutY="240.0" mnemonicParsing="false" text="Usuń plan" />
-      <Button layoutX="250.0" layoutY="281.0" mnemonicParsing="false" text="wyjdź" />
-      <Button layoutX="97.0" layoutY="74.0" mnemonicParsing="false" text="Wyświetl plan" />
+      <Button fx:id="btnCreateSchedule" layoutX="96.0" layoutY="118.0" mnemonicParsing="false" text="Ułóż plan" />
+      <Button fx:id="btnEditSchedule" layoutX="87.0" layoutY="175.0" mnemonicParsing="false" text="Edytuj plan" />
+      <Button fx:id="btnExit" layoutX="250.0" layoutY="281.0" mnemonicParsing="false" text="wyjdź" />
+      <Button fx:id="btnShowSchedule" layoutX="97.0" layoutY="74.0" mnemonicParsing="false" text="Wyświetl plan" />
    </children>
 </Pane>

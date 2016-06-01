@@ -2,6 +2,7 @@ package Model.ConnectSql;
 
 import Model.Employee.Employee;
 import Model.Employee.EmployeeTable;
+import Model.Subject.Subject;
 import View.Employee.MessagePanelEmployee;
 
 import java.sql.Connection;
@@ -57,16 +58,19 @@ public class DriverSqlEmployee {
      * metoda pobierająca z bazy wszystkie przedmioty
      * @return subjectList
      */
-    public ArrayList<String> getSubjectList(){
+    public ArrayList<String> getSubjectList(String choiceCathedral){
         ArrayList<String> subjectList = null;
         connectWithDataBase();
         try{
-            String sql = "select nazwa_przedmiotu from pensum_Menager.przedmioty";
+            String sql = "select id_przedmiotu,nazwa_przedmiotu " +
+                    "from pensum_Menager.przedmioty p " +
+                    " inner join pensum_Menager.katedra k on k.id_katedry = p.id_katedry" +
+                    " where  k.nazwa_katedry = '" + choiceCathedral +"'";
             preparedStatement = myConnect.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
             subjectList = new ArrayList<>();
             while (resultSet.next()){
-                subjectList.add(resultSet.getString("nazwa_przedmiotu"));
+                subjectList.add(resultSet.getString(2));
             }
         } catch (Exception ex){
             System.err.print("Nie można pobrać przedmiotów");
@@ -339,6 +343,71 @@ public class DriverSqlEmployee {
 
         }finally {
             closeDriverSql();
+        }
+    }
+
+    public Subject getSubjectListByName(String choiceCathedral){
+        Subject subject = null;
+        connectWithDataBase();
+        try{
+            String sql = "select id_przedmiotu,nazwa_przedmiotu " +
+                    "from pensum_Menager.przedmioty  " +
+                    " where nazwa_przedmiotu = '" + choiceCathedral +"' limit 1";
+            preparedStatement = myConnect.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                subject = new Subject(resultSet.getInt(1), resultSet.getString(2));
+            }
+        } catch (Exception ex){
+            System.err.print("Nie można pobrać przedmiotów");
+            messagePanelEmployee.showErrorMessage("Nie można pobrać listy przedmiotów");
+        }finally {
+            closeDriverSql();
+        }
+        return subject;
+    }
+
+
+    public int getEmployeeByValue(Employee employee){
+        String sql = "select id_pracownika from pracownik where imie_pracownika = '" + employee.getName() + "' and nazwisko_pracownika = '" + employee.getSurname() + "' and pensum = " + employee.getPensum();
+        int idEmployee = 0;
+        connectWithDataBase();
+        try{
+            preparedStatement = myConnect.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+
+                idEmployee = resultSet.getInt(1);
+
+            }
+        }catch (Exception ex){
+            System.out.println(ex);
+        }finally {
+            closeDriverSql();
+        }
+        return idEmployee;
+    }
+
+    public void saveEmloyeeSubject(ArrayList<Subject> employeeSubjectList, int idEmployee){
+        String sql = "insert into pensum_Menager.przedmioty_prowadzacego " +
+                "( id_pracownika, id_przedmiotu, insert_time) values " +
+                "(?,?, now());";
+        for(int i=0; i < employeeSubjectList.size(); i++){
+        connectWithDataBase();
+        try{
+
+                preparedStatement = myConnect.prepareStatement(sql);
+                preparedStatement.setInt(1, idEmployee);
+                preparedStatement.setInt(2, employeeSubjectList.get(i).getId_subject());
+                preparedStatement.executeUpdate();
+
+
+        }catch (Exception ex){
+            System.err.print(ex);
+        }finally {
+            closeDriverSql();
+        }
         }
     }
 }

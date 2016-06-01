@@ -13,14 +13,14 @@
       <Label layoutX="298.0" layoutY="87.0" text="Tryb" />
       <Label layoutX="506.0" layoutY="30.0" text="Rok" />
       <Label layoutX="437.0" layoutY="96.0" text="Semestr" />
-      <TableView layoutX="26.0" layoutY="184.0" prefHeight="173.0" prefWidth="515.0">
+      <TableView fx:id="tableStudent" layoutX="26.0" layoutY="184.0" prefHeight="173.0" prefWidth="515.0">
         <columns>
           <TableColumn fx:id="colName" prefWidth="75.0" text="Imie" />
           <TableColumn fx:id="colSurname" prefWidth="75.0" text="Nazwisko" />
             <TableColumn fx:id="colTitleStudy" prefWidth="75.0" text="Kierunek" />
             <TableColumn fx:id="colYear" prefWidth="75.0" text="Rok" />
             <TableColumn fx:id="colPeriod" prefWidth="107.0" text="Semestr" />
-            <TableColumn prefWidth="107.0" />
+            <TableColumn fx:id="colWarunek" prefWidth="107.0" text="Czy ma warunek" />
         </columns>
       </TableView>
       <TextField fx:id="fieldName" layoutX="81.0" layoutY="70.0" />
@@ -29,7 +29,8 @@
       <ChoiceBox fx:id="choiceBoxYear" layoutX="418.0" layoutY="58.0" prefWidth="150.0" />
       <ChoiceBox fx:id="choiceBoxPeriod" layoutX="429.0" layoutY="126.0" prefWidth="150.0" />
       <ChoiceBox fx:id="choiceBoxMode" layoutX="257.0" layoutY="115.0" prefWidth="150.0" />
-      <Button fx:id="btnSearch" layoutX="129.0" layoutY="151.0" mnemonicParsing="false" text="Szukaj" />
-      <Button fx:id="btnExit" layoutX="213.0" layoutY="151.0" mnemonicParsing="false" text="Wyjdź" />
+      <Button fx:id="btnSearch" layoutX="56.0" layoutY="151.0" mnemonicParsing="false" onAction="#searchBtnAction" text="Szukaj" />
+      <Button fx:id="btnExit" layoutX="213.0" layoutY="151.0" mnemonicParsing="false" onAction="#exitBtnAction" text="Wyjdź" />
+      <Button fx:id="btnDelete" layoutX="130.0" layoutY="151.0" mnemonicParsing="false" onAction="#deleteBtnAction" text="Usuń" />
    </children>
 </Pane>
