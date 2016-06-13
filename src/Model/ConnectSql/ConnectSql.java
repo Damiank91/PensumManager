@@ -5,7 +5,7 @@ package Model.ConnectSql;
  */
 public class ConnectSql {
 
-    private static final String DB_URL="jdbc:mysql://localhost:3306/pensum_menager";
+    private static final String DB_URL="jdbc:mysql://localhost:3306/pensum";
     private static final String USER = "root";
     private static final String PASSWORD = "root";
 

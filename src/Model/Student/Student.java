@@ -8,13 +8,13 @@ public class Student {
     private String nameStudent;
     private String surnameStudent;
     private String bornDate;
-    private char gender;
-    private int idTrybu;
+    private String gender;
     private int idKierunku;
-    private int idGrupySzkoleniowej;
-    private int rok;
+    private String tryb;
     private int semestrStudiow;
-    private boolean czyStudentMaWarunek;
+    private String insert_time;
+
+
 
     public int getIdStudent() {
         return idStudent;
@@ -48,20 +48,20 @@ public class Student {
         this.bornDate = bornDate;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public int getIdTrybu() {
-        return idTrybu;
+    public String getTrybu() {
+        return tryb;
     }
 
-    public void setIdTrybu(int idTrybu) {
-        this.idTrybu = idTrybu;
+    public void setIdTrybu(String idTrybu) {
+        this.tryb = tryb;
     }
 
     public int getIdKierunku() {
@@ -72,21 +72,6 @@ public class Student {
         this.idKierunku = idKierunku;
     }
 
-    public int getIdGrupySzkoleniowej() {
-        return idGrupySzkoleniowej;
-    }
-
-    public void setIdGrupySzkoleniowej(int idGrupySzkoleniowej) {
-        this.idGrupySzkoleniowej = idGrupySzkoleniowej;
-    }
-
-    public int getRok() {
-        return rok;
-    }
-
-    public void setRok(int rok) {
-        this.rok = rok;
-    }
 
     public int getSemestrStudiow() {
         return semestrStudiow;
@@ -96,27 +81,26 @@ public class Student {
         this.semestrStudiow = semestrStudiow;
     }
 
-    public boolean isCzyStudentMaWarunek() {
-        return czyStudentMaWarunek;
+
+    public String getInsert_time() {
+        return insert_time;
     }
 
-    public void setCzyStudentMaWarunek(boolean czyStudentMaWarunek) {
-        this.czyStudentMaWarunek = czyStudentMaWarunek;
+    public void setInsert_time(String insert_time) {
+        this.insert_time = insert_time;
     }
 
-    public Student(String nameStudent, String surnameStudent, String bornDate, char gender,
-                   int idTrybu, int idKierunku, int idGrupySzkoleniowej, int rok, int semestrStudiow, boolean czyStudentMaWarunek) {
+    public Student(String nameStudent, String surnameStudent, String bornDate, String gender,
+                   String tryb, int idKierunku, int semestrStudiow) {
         this.nameStudent = nameStudent;
         this.surnameStudent = surnameStudent;
         this.bornDate = bornDate;
         this.gender = gender;
-        this.idTrybu = idTrybu;
+        this.tryb = tryb;
         this.idKierunku = idKierunku;
-        this.idGrupySzkoleniowej = idGrupySzkoleniowej;
-        this.rok = rok;
         this.semestrStudiow = semestrStudiow;
-        this.czyStudentMaWarunek = czyStudentMaWarunek;
     }
+
 
     @Override
     public String toString() {
@@ -125,13 +109,11 @@ public class Student {
                 ", nameStudent='" + nameStudent + '\'' +
                 ", surnameStudent='" + surnameStudent + '\'' +
                 ", bornDate='" + bornDate + '\'' +
-                ", gender='" + gender + '\'' +
-                ", idTrybu=" + idTrybu +
+                ", gender=" + gender +
+                ", tryb='" + tryb + '\'' +
                 ", idKierunku=" + idKierunku +
-                ", idGrupySzkoleniowej=" + idGrupySzkoleniowej +
-                ", rok=" + rok +
                 ", semestrStudiow=" + semestrStudiow +
-                ", czyStudentMaWarunek=" + czyStudentMaWarunek +
+                ", insert_time='" + insert_time + '\'' +
                 '}';
     }
 }

@@ -1,50 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Employee.ControllerAddEmployee">
+<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Employee.ControllerAddEmployee">
    <children>
-      <Label layoutX="211.0" layoutY="29.0" text="Dodaj pracownika" />
-      <Label layoutX="46.0" layoutY="90.0" text="Imie" />
-      <Label layoutX="46.0" layoutY="127.0" text="Nazwisko" />
-      <Label layoutX="46.0" layoutY="169.0" text="Data urodzenia" />
-      <Label layoutX="46.0" layoutY="197.0" text="Płeć" />
-      <Label layoutX="46.0" layoutY="233.0" text="Kierownik" />
-      <Label layoutX="46.0" layoutY="273.0" text="Katedra" />
-      <Button fx:id="btnSave" layoutX="71.0" layoutY="351.0" mnemonicParsing="false" text="Zapisz" />
-      <Button fx:id="btnClearField" layoutX="168.0" layoutY="351.0" mnemonicParsing="false" text="Wyczyść pola" />
-      <Button fx:id="btnExit" layoutX="282.0" layoutY="351.0" mnemonicParsing="false" text="Wyjdź" />
-      <Label layoutX="341.0" layoutY="46.0" text="Dodaj przedmiot do listy prowadzącego" />
-      <Label layoutX="385.0" layoutY="148.0" text="Przedmioty pracownika" />
-      <ChoiceBox fx:id="choiceSubject" layoutX="401.0" layoutY="71.0" prefWidth="150.0" />
-      <TextField fx:id="fieldName" layoutX="127.0" layoutY="86.0" />
-      <TextField fx:id="fieldSurname" layoutX="123.0" layoutY="123.0" />
-      <ChoiceBox fx:id="choiceCathedral" layoutX="122.0" layoutY="269.0" prefHeight="25.0" prefWidth="174.0" />
-      <RadioButton fx:id="choiceManagerTrue" layoutX="127.0" layoutY="233.0" mnemonicParsing="false" text="Tak">
-         <toggleGroup>
-            <ToggleGroup fx:id="manager" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="choiceManagerFalse" layoutX="208.0" layoutY="233.0" mnemonicParsing="false" text="Nie" toggleGroup="$manager" />
-      <RadioButton fx:id="choiceGenderMale" layoutX="127.0" layoutY="197.0" mnemonicParsing="false" text="Mężczyzna">
-         <toggleGroup>
-            <ToggleGroup fx:id="gender" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="choiceGenderFemale" layoutX="208.0" layoutY="197.0" mnemonicParsing="false" text="Kobieta" toggleGroup="$gender" />
-      <DatePicker fx:id="bornDate" layoutX="141.0" layoutY="165.0" />
-      <Button fx:id="btnAddSubjectToTable" layoutX="421.0" layoutY="111.0" mnemonicParsing="false" onAction="#addSubjectTable" text="Dodaj" />
-      <Label layoutX="43.0" layoutY="301.0" prefHeight="17.0" prefWidth="48.0" text="Pensum" />
-      <TextField fx:id="fieldPensum" layoutX="121.0" layoutY="297.0" prefHeight="25.0" prefWidth="41.0" />
-      <Button fx:id="btnDeleteValueTable" layoutX="493.0" layoutY="111.0" mnemonicParsing="false" onAction="#deleteSubjectTable" text="Usuń" />
-      <TableView fx:id="subjectTable" layoutX="369.0" layoutY="169.0" prefHeight="251.0" prefWidth="261.0">
-        <columns>
-          <TableColumn fx:id="subjectIdTable" prefWidth="93.0" text="Id przedmiotu" />
-          <TableColumn fx:id="subjectNameTable" prefWidth="167.0" text="Nazwa przedmiotu" />
-        </columns>
-      </TableView>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="20.0" prefHeight="50.0" prefWidth="350.0" text="Dodaj pracownika" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="85.0" text="Imie">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
+            <Label layoutX="40.0" layoutY="125.0" text="Nazwisko">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
+            <Label layoutX="40.0" layoutY="165.0" text="Data urodzenia">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
+            <Label layoutX="40.0" layoutY="205.0" text="Płeć">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
+            <Label layoutX="40.0" layoutY="245.0" text="Kierownik">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
+            <Label layoutX="40.0" layoutY="285.0" text="Katedra">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
+            <Button fx:id="btnSave" alignment="CENTER" layoutX="130.0" layoutY="455.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Zapisz" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnClearField" alignment="CENTER" layoutX="30.0" layoutY="455.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Wyczyść pola">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnExit" alignment="CENTER" layoutX="230.0" layoutY="455.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Wyjdź">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label alignment="CENTER" layoutX="375.0" layoutY="20.0" prefHeight="50.0" prefWidth="300.0" text="Dodaj przedmiot do listy prowadzącego">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="375.0" layoutY="175.0" prefHeight="50.0" prefWidth="300.0" text="Przedmioty pracownika">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="choiceSubject" layoutX="425.0" layoutY="80.0" prefWidth="200.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ChoiceBox>
+            <TextField fx:id="fieldName" alignment="CENTER" layoutX="130.0" layoutY="80.0" prefHeight="25.0" prefWidth="190.0" />
+            <TextField fx:id="fieldSurname" alignment="CENTER" layoutX="130.0" layoutY="120.0" prefWidth="190.0" />
+            <ChoiceBox fx:id="choiceCathedral" layoutX="130.0" layoutY="285.0" prefHeight="25.0" prefWidth="190.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ChoiceBox>
+            <RadioButton fx:id="choiceManagerTrue" layoutX="130.0" layoutY="240.0" mnemonicParsing="false" text="Tak">
+               <toggleGroup>
+                  <ToggleGroup fx:id="manager" />
+               </toggleGroup>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </RadioButton>
+            <RadioButton fx:id="choiceManagerFalse" layoutX="230.0" layoutY="240.0" mnemonicParsing="false" text="Nie" toggleGroup="$manager">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </RadioButton>
+            <RadioButton fx:id="choiceGenderMale" contentDisplay="CENTER" layoutX="130.0" layoutY="200.0" mnemonicParsing="false" text="Mężczyzna">
+               <toggleGroup>
+                  <ToggleGroup fx:id="gender" />
+               </toggleGroup>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </RadioButton>
+            <RadioButton fx:id="choiceGenderFemale" layoutX="230.0" layoutY="200.0" mnemonicParsing="false" text="Kobieta" textAlignment="CENTER" toggleGroup="$gender">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </RadioButton>
+            <DatePicker fx:id="bornDate" layoutX="130.0" layoutY="160.0" prefWidth="190.0" />
+            <Button fx:id="btnAddSubjectToTable" layoutX="425.0" layoutY="120.0" mnemonicParsing="false" onAction="#addSubjectTable" prefHeight="25.0" prefWidth="90.0" text="Dodaj">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="40.0" layoutY="325.0" prefHeight="17.0" prefWidth="48.0" text="Pensum">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
+            <TextField fx:id="fieldPensum" alignment="CENTER" layoutX="130.0" layoutY="325.0" prefHeight="25.0" prefWidth="190.0" />
+            <Button fx:id="btnDeleteValueTable" layoutX="535.0" layoutY="120.0" mnemonicParsing="false" onAction="#deleteSubjectTable" prefHeight="25.0" prefWidth="90.0" text="Usuń">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <TableView fx:id="subjectTable" layoutX="375.0" layoutY="225.0" prefHeight="255.0" prefWidth="300.0">
+              <columns>
+                <TableColumn fx:id="subjectNameTable" prefWidth="150.0" text="Nazwa przedmiotu" />
+                <TableColumn fx:id="subjectIdTable" prefWidth="150.0" text="Id przedmiotu" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
    </children>
-</Pane>
+</StackPane>

@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 public class ControllerMainWindow implements Initializable {
 
+
     @FXML
     private Button btnEmployee;
 
@@ -16,16 +17,12 @@ public class ControllerMainWindow implements Initializable {
     private Button btnSubjectList;
 
     @FXML
-    private Button btnGroupStudents;
-
-    @FXML
     private Button btnStudents;
 
     @FXML
     private Button btnScheduleList;
 
-    @FXML
-    private Button btnRooms;
+
 
 
 
@@ -34,6 +31,7 @@ public class ControllerMainWindow implements Initializable {
         btnEmployee.setOnAction(event -> Main.setSceneEmployeeWindow());
         btnStudents.setOnAction(event -> Main.setSceneStudentWindow());
         btnScheduleList.setOnAction(event -> Main.setSceneScheduleWindow());
+        btnSubjectList.setOnAction(event -> Main.setSceneSubjectWindow());
 
     }
 }

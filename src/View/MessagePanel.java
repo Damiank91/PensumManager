@@ -1,20 +1,20 @@
-package View.Student;
+package View;
 
 import javafx.scene.control.Alert;
 
 /**
- * Created by Damian on 2016-05-07.
+ * Created by Damian on 2016-06-13.
  */
-public class MessagePanelStudent {
+public class MessagePanel {
 
-    public MessagePanelStudent(){
+    public MessagePanel(){
 
     }
 
-    public void addStudentNoChoice(String contentText){
+    public void addNoChoice(String contentText){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Ostrze¿enie");
-        alert.setHeaderText("Wyst¹pi³ b³¹d podczas zapisu studenta");
+        alert.setHeaderText("Wyst¹pi³ b³¹d podczas zapisu danych");
         alert.setContentText(contentText);
         alert.showAndWait();
     }

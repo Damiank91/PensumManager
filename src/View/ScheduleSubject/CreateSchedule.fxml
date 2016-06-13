@@ -6,201 +6,226 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="1067.0" stylesheets="@ScheduleSubjectStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ScheduleSubject.ControllerCreateSchedule">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="1334.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ScheduleSubject.ControllerCreateSchedule">
    <children>
-      <GridPane id="gridPane" fx:id="gridPaneEmplyee" gridLinesVisible="true" layoutX="15.0" layoutY="43.0" prefHeight="221.0" prefWidth="477.0">
+      <ChoiceBox fx:id="choiceBoxEmployee" layoutX="72.0" layoutY="499.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceBoxRoom" layoutX="257.0" layoutY="499.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceBoxSubject" layoutX="437.0" layoutY="499.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceBoxDay" layoutX="613.0" layoutY="496.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceBoxTime" layoutX="794.0" layoutY="496.0" prefWidth="150.0" />
+      <Button fx:id="btnSave" layoutX="147.0" layoutY="561.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="161.0" text="Zapisz" />
+      <Button fx:id="btnExit" layoutX="572.0" layoutY="561.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="161.0" text="Wyjdź" />
+      <Label layoutX="72.0" layoutY="468.0" prefHeight="17.0" prefWidth="67.0" text="Pracownik">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label layoutX="257.0" layoutY="470.0" text="Sala">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label layoutX="437.0" layoutY="470.0" text="Przedmiot">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label layoutX="613.0" layoutY="467.0" text="Dzień tygodnia">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label layoutX="794.0" layoutY="467.0" text="Godzina lekcyjna">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label layoutX="121.0" layoutY="23.0" prefHeight="20.0" prefWidth="78.0" text="Plan zajęć:">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
+      <Label layoutX="718.0" layoutY="23.0" text="Plan zajęć dla wybranej sali">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
+      <GridPane fx:id="gridEmploye" gridLinesVisible="true" layoutX="32.0" layoutY="49.0" prefHeight="406.0" prefWidth="570.0">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="76.0" minWidth="80.0" prefWidth="90.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="90.0" minWidth="10.0" prefWidth="74.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="133.0" minWidth="10.0" prefWidth="110.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="92.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="90.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="107.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="90.0" minWidth="10.0" prefWidth="110.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Poniedziałek" GridPane.columnIndex="1" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Wtorek" GridPane.columnIndex="2">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Środa" GridPane.columnIndex="3">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label prefHeight="17.0" prefWidth="63.0" text="Czwartek" GridPane.columnIndex="4">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Piątek" GridPane.columnIndex="5">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label prefHeight="15.0" prefWidth="56.0" text="8.00-9.45" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="10.00-11.45" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="12.00-13.45" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="14.00-15.45" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="16.00-17.45" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="18.00-19.45" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="20.00-21.45" GridPane.rowIndex="7">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
+            <Label prefHeight="33.0" prefWidth="81.0" />
+            <Label prefHeight="33.0" prefWidth="81.0" text="8.00-9.45" wrapText="true" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label prefHeight="33.0" prefWidth="72.0" text="10.00-11.45" wrapText="true" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label prefHeight="33.0" prefWidth="81.0" text="12.00-13.45" wrapText="true" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label prefHeight="33.0" prefWidth="81.0" text="14.00-15.45" wrapText="true" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label prefHeight="33.0" prefWidth="81.0" text="16.00-17.45" wrapText="true" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label prefHeight="33.0" prefWidth="81.0" text="18.00-19.45" wrapText="true" GridPane.rowIndex="6">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label prefHeight="33.0" prefWidth="81.0" text="20.00-21.45" wrapText="true" GridPane.rowIndex="7">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="33.0" prefWidth="90.0" text="Poniedziałek" wrapText="true" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="33.0" prefWidth="90.0" text="Wtorek" wrapText="true" GridPane.columnIndex="2">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="33.0" prefWidth="90.0" text="Środa" wrapText="true" GridPane.columnIndex="3">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="33.0" prefWidth="90.0" text="Czwartek" wrapText="true" GridPane.columnIndex="4">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="33.0" prefWidth="90.0" text="Piątek" wrapText="true" GridPane.columnIndex="5">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+            <Label contentDisplay="CENTER" minHeight="45.0" prefWidth="110.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="7" />
          </children>
-         <padding>
-            <Insets left="10.0" top="10.0" />
-         </padding>
-         <opaqueInsets>
-            <Insets top="30.0" />
-         </opaqueInsets>
       </GridPane>
-      <GridPane id="gridPane" fx:id="gridPaneRoom" gridLinesVisible="true" layoutX="553.0" layoutY="43.0" prefHeight="221.0" prefWidth="477.0">
+      <Label fx:id="employeeName" layoutX="243.0" layoutY="23.0" prefHeight="17.0" prefWidth="276.0">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
+      <GridPane fx:id="gridRoom" gridLinesVisible="true" layoutX="636.0" layoutY="56.0" prefHeight="398.0" prefWidth="675.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="73.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="110.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="110.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="110.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="110.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="110.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="74.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <Label text="Poniedziałek" GridPane.columnIndex="1" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Wtorek" GridPane.columnIndex="2">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Środa" GridPane.columnIndex="3">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label prefHeight="17.0" prefWidth="63.0" text="Czwartek" GridPane.columnIndex="4">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Piątek" GridPane.columnIndex="5">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label prefHeight="15.0" prefWidth="56.0" text="8.00-9.45" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="10.00-11.45" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="12.00-13.45" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="14.00-15.45" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="16.00-17.45" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="18.00-19.45" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="20.00-21.45" GridPane.rowIndex="7">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
+            <Label minHeight="33.0" prefWidth="75.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="33.0" prefWidth="75.0" text="8.00-9.45" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="33.0" prefWidth="75.0" text="10.00-11.45" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="33.0" prefWidth="75.0" text="12.00-13.45" GridPane.rowIndex="3" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="33.0" prefWidth="75.0" text="14.00-15.45" GridPane.rowIndex="4" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="33.0" prefWidth="75.0" text="16.00-17.45" GridPane.rowIndex="5" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="33.0" prefWidth="75.0" text="18.00-19.45" GridPane.rowIndex="6" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="33.0" prefWidth="75.0" text="20.00-21.45" GridPane.rowIndex="7" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="10.0" prefWidth="90.0" text="Poniedziałek" GridPane.columnIndex="1" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="10.0" prefWidth="90.0" text="Wtorek" GridPane.columnIndex="2" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="10.0" prefWidth="90.0" text="Środa" wrapText="true" GridPane.columnIndex="3" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="10.0" prefWidth="90.0" text="Czwartek" wrapText="true" GridPane.columnIndex="4" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+            <Label alignment="CENTER" contentDisplay="CENTER" minHeight="10.0" prefWidth="90.0" text="Piątek" wrapText="true" GridPane.columnIndex="5" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+            <Label minHeight="45.0" prefWidth="120.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+            <Label minHeight="45.0" prefHeight="93.0" prefWidth="121.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="7" />
          </children>
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="76.0" minWidth="80.0" prefWidth="90.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <padding>
-            <Insets right="10.0" top="10.0" />
-         </padding>
-         <opaqueInsets>
-            <Insets top="30.0" />
-         </opaqueInsets>
       </GridPane>
-      <ChoiceBox fx:id="choiceBoxRoom" layoutX="254.0" layoutY="336.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="choiceBoxEmployee" layoutX="69.0" layoutY="334.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="choiceBoxSubject" layoutX="434.0" layoutY="336.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="choiceBoxDay" layoutX="610.0" layoutY="336.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="choiceBoxTime" layoutX="791.0" layoutY="336.0" prefWidth="150.0" />
-      <Button fx:id="btnSave" layoutX="253.0" layoutY="410.0" mnemonicParsing="false" text="Zapisz" />
-      <Button fx:id="btnExit" layoutX="467.0" layoutY="410.0" mnemonicParsing="false" text="Wyjdź" />
-      <Button fx:id="btnClear" layoutX="326.0" layoutY="410.0" mnemonicParsing="false" text="Wyczyść ustawienia" />
-      <Label layoutX="69.0" layoutY="305.0" prefHeight="17.0" prefWidth="67.0" text="Pracownik" />
-      <Label layoutX="254.0" layoutY="307.0" text="Sala" />
-      <Label layoutX="434.0" layoutY="307.0" text="Przedmiot" />
-      <Label layoutX="610.0" layoutY="307.0" text="Dzień tygodnia" />
-      <Label layoutX="791.0" layoutY="307.0" text="Godzina lekcyjna" />
-      <Label layoutX="176.0" layoutY="23.0" text="Plan zajęć dla wybranego pracownika" />
-      <Label layoutX="720.0" layoutY="23.0" text="Plan zajęć dla wybranej sali" />
+      <Button fx:id="btnClear" layoutX="356.0" layoutY="561.0" mnemonicParsing="false" text="Wyczyść pola wyszukiwania" />
    </children>
-   <padding>
-      <Insets left="10.0" />
-   </padding>
+   <rotationAxis>
+      <Point3D x="1.0" y="1.0" z="1.0" />
+   </rotationAxis>
 </Pane>

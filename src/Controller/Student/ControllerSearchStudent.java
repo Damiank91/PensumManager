@@ -21,19 +21,14 @@ public class ControllerSearchStudent implements Initializable {
     private TextField fieldName;
 
     @FXML
-    private Button btnSearch;
-
-    @FXML
     private TextField fieldSurname;
 
     @FXML
-    private ChoiceBox<Integer> choiceBoxPeriod;
+    private ChoiceBox<String> choiceBoxPeriod;
 
     @FXML
     private ChoiceBox<String> choiceBoxTitleStudy;
 
-    @FXML
-    private ChoiceBox<Integer> choiceBoxYear;
 
     @FXML
     private TableView<StudentTable> tableStudent;
@@ -43,12 +38,6 @@ public class ControllerSearchStudent implements Initializable {
 
     @FXML
     private TableColumn<String, StudentTable> colTitleStudy;
-
-    @FXML
-    private TableColumn<Integer, StudentTable> colYear;
-
-    @FXML
-    private TableColumn<Boolean, StudentTable> colWarunek;
 
     @FXML
     private TableColumn<String, StudentTable> colName;
@@ -63,13 +52,13 @@ public class ControllerSearchStudent implements Initializable {
     private Button btnExit;
 
     @FXML
-    private ChoiceBox<String> choiceBoxMode;
+    private Button btnSearch;
+
+
 
     @FXML
     void searchBtnAction(ActionEvent event) {
-        getSearchStudent();
-        setSearchStudentToTable();
-
+        setValueToTable();
     }
 
     @FXML
@@ -82,14 +71,16 @@ public class ControllerSearchStudent implements Initializable {
         Alert alert = new Alert((Alert.AlertType.CONFIRMATION));
         alert.setTitle("Uwaga!");
         alert.setHeaderText("Proces usuwania studenta jest nieodwracalny!");
-        alert.setContentText("Czy chcesz to zrobiæ?");
+        alert.setContentText("Czy chcesz to zrobiï¿½?");
         Optional<ButtonType> result = alert.showAndWait();
         if(result.get() == ButtonType.OK){
             driverSqlStudent.deleteStudent(getEditIdStudent());
+            setValueToTable();
         } else {
             alert.close();
         }
     }
+
 
     DriverSqlStudent driverSqlStudent = new DriverSqlStudent();
     ArrayList<StudentTable> studentTableArrayList = new ArrayList<>();
@@ -97,14 +88,17 @@ public class ControllerSearchStudent implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setListaKierunkow();
-        setListaTrybow();
-        setRocznik();
         setSemestr();
     }
 
+    private void setValueToTable(){
+        getSearchStudent();
+        setSearchStudentToTable();
+    }
+
     /**
-     * metoda wywolana po wybraniu przycisku wyjdŸ
-     * wyswietla g³ówne okno student i czysci wszystkie pola
+     * metoda wywolana po wybraniu przycisku wyjdï¿½
+     * wyswietla gï¿½ï¿½wne okno student i czysci wszystkie pola
      */
     private void selectBtnExit(){
         Main.setSceneStudentWindow();
@@ -117,9 +111,7 @@ public class ControllerSearchStudent implements Initializable {
     private void clearFields(){
         fieldName.setText("");
         fieldSurname.setText("");
-        choiceBoxMode.setValue(null);
         choiceBoxPeriod.setValue(null);
-        choiceBoxYear.setValue(null);
         choiceBoxTitleStudy.setValue(null);
     }
 
@@ -135,55 +127,31 @@ public class ControllerSearchStudent implements Initializable {
         return choiceBoxTitleStudy.getValue();
     }
 
-    private String getTryb(){
-        return choiceBoxMode.getValue();
-    }
-
-    private String getRokString(){
-        return choiceBoxYear.getValue().toString();
-    }
-
     private String getPeriodString(){
-        return choiceBoxPeriod.getValue().toString();
+        return choiceBoxPeriod.getValue();
     }
 
 
     private void setListaKierunkow(){
         ArrayList<String> listaKierunkow = driverSqlStudent.getListeKierunkow();
+        listaKierunkow.add(0,"");
         ObservableList<String> kierunkoObservableList = FXCollections.observableList(listaKierunkow);
         choiceBoxTitleStudy.setItems(kierunkoObservableList);
     }
 
-    private void setRocznik(){
-        ArrayList<Integer> roczniki = new ArrayList<>();
-        roczniki.add(1);
-        roczniki.add(2);
-        roczniki.add(3);
-        roczniki.add(4);
-        choiceBoxYear.setTooltip(new Tooltip("Wybierz rocznik"));
-        ObservableList<Integer> rocznikObservableList = FXCollections.observableList(roczniki);
-        choiceBoxYear.setItems(rocznikObservableList);
-    }
-
-    private void setListaTrybow(){
-        ArrayList<String> listaTrybow;
-        choiceBoxMode.setTooltip(new Tooltip("Wybierz tryb"));
-        listaTrybow = driverSqlStudent.getListeTrybow();
-        ObservableList<String> trybyObservableList = FXCollections.observableList(listaTrybow);
-        choiceBoxMode.setItems(trybyObservableList);
-    }
 
     private void setSemestr(){
-        ArrayList<Integer> semestr = new ArrayList<>();
-        semestr.add(1);
-        semestr.add(2);
-        semestr.add(3);
-        semestr.add(4);
-        semestr.add(5);
-        semestr.add(6);
-        semestr.add(7);
+        ArrayList<String> semestr = new ArrayList<>();
+        semestr.add("");
+        semestr.add("1");
+        semestr.add("2");
+        semestr.add("3");
+        semestr.add("4");
+        semestr.add("5");
+        semestr.add("6");
+        semestr.add("7");
         choiceBoxPeriod.setTooltip(new Tooltip("wybierz semestr"));
-        ObservableList<Integer> semestrObservableList = FXCollections.observableList(semestr);
+        ObservableList<String> semestrObservableList = FXCollections.observableList(semestr);
         choiceBoxPeriod.setItems(semestrObservableList);
     }
 
@@ -203,22 +171,16 @@ public class ControllerSearchStudent implements Initializable {
         Map<String, String> searchValue = new HashMap<>();
 
         if(!getFieldName().isEmpty()){
-            searchValue.put("imie_studenta", getFieldName());
+            searchValue.put("s.imie_studenta", getFieldName());
         }
         if(!getFieldSurname().isEmpty()){
-            searchValue.put("nazwisko_studenta",getFieldSurname());
+            searchValue.put("s.nazwisko_studenta",getFieldSurname());
         }
         if(!(getKierunek() == null)){
-            searchValue.put("nazwa_kierunku", getKierunek());
-        }
-        if(!(getTryb() == null)){
-            searchValue.put("name_trybu",getTryb());
-        }
-        if(!(getRokString()== null)) {
-            searchValue.put("rok",getRokString());
+            searchValue.put("k.nazwa_kierunku", getKierunek());
         }
         if(!(getPeriodString() == null)){
-            searchValue.put("semestr",getPeriodString());
+            searchValue.put("s.semestr_studiow",getPeriodString());
         }
 
         return searchValue;
@@ -230,9 +192,7 @@ public class ControllerSearchStudent implements Initializable {
         colName.setCellValueFactory(new PropertyValueFactory<>("nameStudent"));
         colSurname.setCellValueFactory(new PropertyValueFactory<>("surnameStudent"));
         colTitleStudy.setCellValueFactory(new PropertyValueFactory<>("kierunek"));
-        colYear.setCellValueFactory(new PropertyValueFactory<>("rok"));
         colPeriod.setCellValueFactory(new PropertyValueFactory<>("semestr"));
-        colWarunek.setCellValueFactory(new PropertyValueFactory<>("czyMaWarunek"));
     }
 }
 

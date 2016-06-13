@@ -96,6 +96,12 @@ public class Employee {
         this.change_time = change_time;
     }
 
+    public Employee(int idEmploye, String name, String surname){
+        this.idEmploye =  idEmploye;
+        this.name = name;
+        this.surname = surname;
+    }
+
     public Employee(String name, String surname, String birthDate, char gender, boolean isManager, int idCathedral,int pensum){
         this.name = name;
         this.surname = surname;
@@ -131,4 +137,6 @@ public class Employee {
                 ", change_time='" + change_time + '\'' +
                 '}';
     }
+
+
 }

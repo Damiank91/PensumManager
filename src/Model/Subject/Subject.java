@@ -47,6 +47,12 @@ public class Subject {
     public Subject(int id_subject, String name_subject) {
         this.id_subject = id_subject;
         this.name_subject = name_subject;
+
+    }
+
+    public Subject(String name_subject, int id_cathedral) {
+        this.name_subject = name_subject;
+        this.id_cathedral = id_cathedral;
     }
 
     public Subject(int id_subject, String name_subject, int id_cathedral) {

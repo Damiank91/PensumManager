@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SubjectList.ControllerSearchSubList">
+   <children>
+      <TableView fx:id="tableSubject" layoutX="60.0" layoutY="152.0" prefHeight="232.0" prefWidth="515.0">
+        <columns>
+            <TableColumn fx:id="colIdSubject" prefWidth="74.0" text="Id" />
+          <TableColumn fx:id="colNameSubjext" prefWidth="245.0" text="Nazwa przedmiotu" />
+          <TableColumn fx:id="colCathedry" prefWidth="195.0" text="Katedra" />
+        </columns>
+         <opaqueInsets>
+            <Insets bottom="20.0" left="20.0" right="20.0" />
+         </opaqueInsets>
+      </TableView>
+      <Button fx:id="btnSearch" layoutX="109.0" layoutY="396.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Szukaj" />
+      <Button fx:id="btnDelete" layoutX="260.0" layoutY="396.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Usuń" />
+      <Button fx:id="btnExit" layoutX="391.0" layoutY="396.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Wyjdź" />
+      <TextField fx:id="fieldName" layoutX="129.0" layoutY="59.0" prefHeight="25.0" prefWidth="172.0" />
+      <ChoiceBox fx:id="choiceCathedry" layoutX="128.0" layoutY="106.0" prefHeight="25.0" prefWidth="172.0" />
+      <Label layoutX="30.0" layoutY="63.0" prefHeight="17.0" prefWidth="65.0" text="Nazwa">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label layoutX="30.0" layoutY="110.0" text="Katedra">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label layoutX="373.0" layoutY="53.0" text="Szukaj Przedmiotu">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

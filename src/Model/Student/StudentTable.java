@@ -12,9 +12,7 @@ public class StudentTable {
     private SimpleStringProperty nameStudent;
     private SimpleStringProperty surnameStudent;
     private SimpleStringProperty kierunek;
-    private SimpleIntegerProperty rok;
     private SimpleIntegerProperty semestr;
-    private SimpleBooleanProperty czyMaWarunek;
 
     public int getIdStudent() {
         return idStudent.get();
@@ -64,18 +62,6 @@ public class StudentTable {
         this.kierunek.set(kierunek);
     }
 
-    public int getRok() {
-        return rok.get();
-    }
-
-    public SimpleIntegerProperty rokProperty() {
-        return rok;
-    }
-
-    public void setRok(int rok) {
-        this.rok.set(rok);
-    }
-
     public int getSemestr() {
         return semestr.get();
     }
@@ -88,25 +74,12 @@ public class StudentTable {
         this.semestr.set(semestr);
     }
 
-    public boolean getCzyMaWarunek() {
-        return czyMaWarunek.get();
-    }
 
-    public SimpleBooleanProperty czyMaWarunekProperty() {
-        return czyMaWarunek;
-    }
-
-    public void setCzyMaWarunek(boolean czyMaWarunek) {
-        this.czyMaWarunek.set(czyMaWarunek);
-    }
-
-    public StudentTable(int idStudenta, String nameStudent, String surnameStudent,String kierunek, int rok, int semestr, boolean czyWarunek){
+    public StudentTable(int idStudenta, String nameStudent, String surnameStudent,String kierunek, int semestr){
         this.idStudent = new SimpleIntegerProperty(idStudenta);
         this.nameStudent = new SimpleStringProperty(nameStudent);
         this.surnameStudent = new SimpleStringProperty(surnameStudent);
         this.kierunek = new SimpleStringProperty(kierunek);
-        this.rok = new SimpleIntegerProperty(rok);
         this.semestr = new SimpleIntegerProperty(semestr);
-        this.czyMaWarunek = new SimpleBooleanProperty(czyWarunek);
     }
 }

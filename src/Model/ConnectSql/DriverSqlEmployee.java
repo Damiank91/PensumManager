@@ -3,7 +3,7 @@ package Model.ConnectSql;
 import Model.Employee.Employee;
 import Model.Employee.EmployeeTable;
 import Model.Subject.Subject;
-import View.Employee.MessagePanelEmployee;
+import View.MessagePanel;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,7 +19,7 @@ public class DriverSqlEmployee {
 
     private Connection myConnect;
     private PreparedStatement preparedStatement;
-    private MessagePanelEmployee messagePanelEmployee;
+    MessagePanel messagePanel = new MessagePanel();
 
 
     public DriverSqlEmployee(){
@@ -33,11 +33,11 @@ public class DriverSqlEmployee {
     private void connectWithDataBase(){
         try{
             myConnect = DriverManager.getConnection(ConnectSql.getDbUrl(),ConnectSql.getUSER(), ConnectSql.getPASSWORD());
-            messagePanelEmployee = new MessagePanelEmployee();
+
         } catch(Exception ex){
             System.err.println("nie można połączyć się z bazą");
             System.err.println(ex.toString());
-            messagePanelEmployee.showErrorMessage("Nie można połączyć się z bazą danych!");
+            messagePanel.showErrorMessage("Nie można połączyć się z bazą danych!");
         }
     }
 
@@ -49,87 +49,10 @@ public class DriverSqlEmployee {
         try{
             myConnect.close();
         } catch (Exception ex){
-            messagePanelEmployee.showErrorMessage("Nie można zamknąć połączenia z bazą danych");
+            messagePanel.showErrorMessage("Nie można zamknąć połączenia z bazą danych");
         }
     }
 
-
-    /**
-     * metoda pobierająca z bazy wszystkie przedmioty
-     * @return subjectList
-     */
-    public ArrayList<String> getSubjectList(String choiceCathedral){
-        ArrayList<String> subjectList = null;
-        connectWithDataBase();
-        try{
-            String sql = "select id_przedmiotu,nazwa_przedmiotu " +
-                    "from pensum_Menager.przedmioty p " +
-                    " inner join pensum_Menager.katedra k on k.id_katedry = p.id_katedry" +
-                    " where  k.nazwa_katedry = '" + choiceCathedral +"'";
-            preparedStatement = myConnect.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            subjectList = new ArrayList<>();
-            while (resultSet.next()){
-                subjectList.add(resultSet.getString(2));
-            }
-        } catch (Exception ex){
-            System.err.print("Nie można pobrać przedmiotów");
-            messagePanelEmployee.showErrorMessage("Nie można pobrać listy przedmiotów");
-        }finally {
-            closeDriverSql();
-        }
-        return subjectList;
-    }
-
-
-    /**
-     * metoda pobierająca listę katedr SGGW Wzim
-     */
-    public ArrayList<String> getCathedralList(){
-        ArrayList<String> cathedralList = null;
-        String sql = "select nazwa_katedry from pensum_Menager.katedra";
-        connectWithDataBase();
-        try {
-
-            preparedStatement = myConnect.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            cathedralList = new ArrayList<>();
-            while (resultSet.next()){
-                cathedralList.add(resultSet.getString("nazwa_katedry"));
-            }
-        } catch (Exception ex){
-            System.err.println(ex);
-            messagePanelEmployee.showErrorMessage("Nie udało się pobrać listy katedr");
-        } finally {
-            closeDriverSql();
-        }
-        return cathedralList;
-    }
-
-
-    /**
-     * @param nameCathedral
-     * @return idCatedry
-     */
-    public int getIdCathedral(String nameCathedral){
-        int idCathedral = 0;
-        String sql = "select id_katedry from pensum_Menager.katedra where nazwa_katedry = ?";
-        connectWithDataBase();
-        try{
-            preparedStatement = myConnect.prepareStatement(sql);
-            preparedStatement.setString(1,nameCathedral);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()){
-                idCathedral = resultSet.getInt("id_katedry");
-            }
-
-        }catch (Exception ex){
-            System.err.println("Nie udało się pobrać id katedry");
-        } finally {
-            closeDriverSql();
-        }
-        return idCathedral;
-    }
 
 
     /**
@@ -161,7 +84,7 @@ public class DriverSqlEmployee {
      * metoda zapisująca nowego pracownika
      */
     public void insertEmployee(Employee employee){
-        String sql = "insert into pensum_Menager.pracownik" +
+        String sql = "insert into pensum.pracownik" +
                 "(imie_pracownika, nazwisko_pracownika, data_urodzenia, plec, czy_Kierownik, id_katedry, pensum, insert_time)" +
                 "values" +
                 "(?,?,?,?,?,?,?,now());";
@@ -191,8 +114,8 @@ public class DriverSqlEmployee {
      */
     private String createSqlQueryEmployeeSearch(Map<String, String> valueSearch){
         String sqlQuery = "select p.id_pracownika, p.imie_pracownika, p.nazwisko_pracownika, ka.nazwa_katedry " +
-                "from pensum_Menager.pracownik p " +
-                "inner join pensum_Menager.katedra ka on ka.id_katedry = p.id_katedry";
+                "from pensum.pracownik p " +
+                "inner join pensum.katedra ka on ka.id_katedry = p.id_katedry";
 
         String tempKey;
         String key;
@@ -254,7 +177,7 @@ public class DriverSqlEmployee {
         connectWithDataBase();
         try{
             preparedStatement = myConnect.prepareStatement(sql);
-            preparedStatement.setInt(1,idEmployee);
+            preparedStatement.setInt(1, idEmployee);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 employee = new Employee(
@@ -279,31 +202,11 @@ public class DriverSqlEmployee {
 
 
     /**
-     * metoda zwracajaca nazwę katedry po jego id
-     * @param idCathedral
-     * @return
+     * Metoda aktualizująca dane pracownika w bazie
+     * @param employee
      */
-    public String getCathedralById(int idCathedral){
-        String sql = "select nazwa_katedry from pensum_menager.katedra where id_katedry = ?";
-        String cathedralName = null;
-        connectWithDataBase();
-        try{
-            preparedStatement = myConnect.prepareStatement(sql);
-            preparedStatement.setInt(1, idCathedral);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
-                cathedralName = resultSet.getString(1);
-            }
-        }catch (Exception ex){
-            System.err.println("Nie można pobrać nazwy katedry po jej id");
-        }finally {
-            closeDriverSql();
-        }
-        return cathedralName;
-    }
-
     public void updateEmployee(Employee employee){
-        String sql = "update pensum_menager.pracownik" +
+        String sql = "update pensum.pracownik" +
                 "set imie_pracownika = ?," +
                 "nazwisko_pracownika = ?, " +
                 "data_urodzenia = ?, " +
@@ -332,8 +235,12 @@ public class DriverSqlEmployee {
     }
 
 
+    /**
+     * metoda usuwająca wskazanego pracownika w bazie
+     * @param idEmployee
+     */
     public void deleteEmployee(int idEmployee){
-        String sql = "delete from pensum_menager.pracownik where id_pracownika = ?";
+        String sql = "delete from pensum.pracownik where id_pracownika = ?";
         connectWithDataBase();
         try{
             preparedStatement = myConnect.prepareStatement(sql);
@@ -346,29 +253,12 @@ public class DriverSqlEmployee {
         }
     }
 
-    public Subject getSubjectListByName(String choiceCathedral){
-        Subject subject = null;
-        connectWithDataBase();
-        try{
-            String sql = "select id_przedmiotu,nazwa_przedmiotu " +
-                    "from pensum_Menager.przedmioty  " +
-                    " where nazwa_przedmiotu = '" + choiceCathedral +"' limit 1";
-            preparedStatement = myConnect.prepareStatement(sql);
-            ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()){
-                subject = new Subject(resultSet.getInt(1), resultSet.getString(2));
-            }
-        } catch (Exception ex){
-            System.err.print("Nie można pobrać przedmiotów");
-            messagePanelEmployee.showErrorMessage("Nie można pobrać listy przedmiotów");
-        }finally {
-            closeDriverSql();
-        }
-        return subject;
-    }
-
-
+    /**
+     * wyszukuje pracownika
+     * @param employee- imie nazwisko pensum
+     * @return jednego pracownika
+     */
     public int getEmployeeByValue(Employee employee){
         String sql = "select id_pracownika from pracownik where imie_pracownika = '" + employee.getName() + "' and nazwisko_pracownika = '" + employee.getSurname() + "' and pensum = " + employee.getPensum();
         int idEmployee = 0;
@@ -389,13 +279,58 @@ public class DriverSqlEmployee {
         return idEmployee;
     }
 
+    /**
+     * metoda pobierająca wszystkich dostępnych pracowników
+     * @return
+     */
+    public ArrayList<String> getEmployee(){
+        String sql = "select concat(imie_pracownika, ' ', nazwisko_pracownika) from pensum.pracownik";
+        ArrayList<String> employeeArrayList = null;
+        connectWithDataBase();
+        try{
+            preparedStatement = myConnect.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            employeeArrayList = new ArrayList<>();
+            while(resultSet.next()){
+                employeeArrayList.add(resultSet.getString(1));
+            }
+        }catch (Exception ex){
+            System.err.print(ex);
+        } finally {
+            closeDriverSql();
+        }
+        return  employeeArrayList;
+    }
+
+    public int getEmployeeByNameSurname(String employee){
+        String[] value = employee.split(" ");
+        String sql = "select id_pracownika from pracownik where imie_pracownika = '" + value[0] + "' and nazwisko_pracownika = '" +value[1] + "' limit 1";
+
+        int idEmployee = 0;
+        connectWithDataBase();
+        try{
+            preparedStatement = myConnect.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+
+                idEmployee = resultSet.getInt(1);
+
+            }
+        }catch (Exception ex){
+            System.out.println(ex);
+        }finally {
+            closeDriverSql();
+        }
+        return idEmployee;
+    }
+
     public void saveEmloyeeSubject(ArrayList<Subject> employeeSubjectList, int idEmployee){
-        String sql = "insert into pensum_Menager.przedmioty_prowadzacego " +
+        String sql = "insert into pensum.przedmioty_prowadzacego " +
                 "( id_pracownika, id_przedmiotu, insert_time) values " +
                 "(?,?, now());";
         for(int i=0; i < employeeSubjectList.size(); i++){
-        connectWithDataBase();
-        try{
+            connectWithDataBase();
+            try{
 
                 preparedStatement = myConnect.prepareStatement(sql);
                 preparedStatement.setInt(1, idEmployee);
@@ -403,11 +338,11 @@ public class DriverSqlEmployee {
                 preparedStatement.executeUpdate();
 
 
-        }catch (Exception ex){
-            System.err.print(ex);
-        }finally {
-            closeDriverSql();
-        }
+            }catch (Exception ex){
+                System.err.print(ex);
+            }finally {
+                closeDriverSql();
+            }
         }
     }
 }

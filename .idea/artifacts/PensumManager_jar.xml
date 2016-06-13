@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PensumManager:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PensumManager_jar</output-path>
+    <root id="archive" name="PensumManager.jar">
+      <element id="module-output" name="PensumManager" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/mysql-connector-java-5.1.37-bin.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

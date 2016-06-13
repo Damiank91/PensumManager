@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SubjectList.ControllerAddSubject">
    <children>
-      <Label layoutX="224.0" layoutY="53.0" text="Dodaj przedmiot" />
-      <Button layoutX="73.0" layoutY="306.0" mnemonicParsing="false" text="Zapisz" />
-      <Button layoutX="226.0" layoutY="306.0" mnemonicParsing="false" text="Wyczyść pola" />
-      <Button layoutX="386.0" layoutY="306.0" mnemonicParsing="false" text="Wyjdź" />
-      <Label layoutX="35.0" layoutY="100.0" text="Nazwa przedmiotu" />
-      <Label layoutX="53.0" layoutY="169.0" text="Katedra" />
-      <ChoiceBox layoutX="177.0" layoutY="165.0" prefWidth="150.0" />
-      <TextField layoutX="164.0" layoutY="96.0" />
+      <Label layoutX="224.0" layoutY="53.0" text="Dodaj przedmiot">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font></Label>
+      <Button fx:id="btnSave" layoutX="94.0" layoutY="262.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Zapisz" />
+      <Button fx:id="btnExit" layoutX="287.0" layoutY="262.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Wyjdź" />
+      <Label layoutX="35.0" layoutY="100.0" text="Nazwa przedmiotu">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <Label layoutX="35.0" layoutY="157.0" text="Katedra">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></Label>
+      <ChoiceBox fx:id="choiceBoxCathedral" layoutX="164.0" layoutY="153.0" prefHeight="25.0" prefWidth="208.0" />
+      <TextField fx:id="fieldSubjectName" layoutX="164.0" layoutY="96.0" prefHeight="25.0" prefWidth="208.0" />
    </children>
 </Pane>

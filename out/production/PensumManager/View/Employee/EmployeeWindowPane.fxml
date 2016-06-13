@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane fx:id="EmployeeWindowPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Employee.ControllerEmployeeWindow">
+<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Employee.ControllerEmployeeWindow">
    <children>
-      <Button fx:id="btnAddEmployee" layoutX="390.0" layoutY="111.0" mnemonicParsing="false" text="Dodaj Pracownika" />
-      <Button fx:id="btnSearchEmplyee" layoutX="111.0" layoutY="111.0" mnemonicParsing="false" text="Szukaj Pracownika" />
-      <Button fx:id="btnExit" layoutX="239.0" layoutY="298.0" mnemonicParsing="false" text="Wyjdź" />
-      <Label layoutX="202.0" layoutY="22.0" text="Pracownicy" />
+      <Pane fx:id="EmployeeWindowPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0">
+         <children>
+            <Button fx:id="btnAddEmployee" alignment="CENTER" layoutX="275.0" layoutY="100.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="150.0" text="Dodaj Pracownika">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btnSearchEmplyee" alignment="CENTER" layoutX="275.0" layoutY="150.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="150.0" text="Szukaj Pracownika">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btnExit" alignment="CENTER" layoutX="275.0" layoutY="455.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="150.0" text="Wyjdź">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Label alignment="CENTER" layoutX="175.0" layoutY="40.0" prefHeight="40.0" prefWidth="350.0" text="Pracownicy">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
-</Pane>
+</StackPane>

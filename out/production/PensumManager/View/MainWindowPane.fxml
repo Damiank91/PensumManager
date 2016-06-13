@@ -1,23 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerMainWindow">
+<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerMainWindow">
    <children>
-      <Button fx:id="btnEmployee" layoutX="113.0" layoutY="106.0" mnemonicParsing="false" text="Pracownicy" />
-      <Button fx:id="btnSubjectList" layoutX="248.0" layoutY="106.0" mnemonicParsing="false" text="Lista przedmiotów" />
-      <Button fx:id="btnRooms" layoutX="248.0" layoutY="175.0" mnemonicParsing="false" text="Sale" />
-      <Button fx:id="btnStudents" layoutX="113.0" layoutY="175.0" mnemonicParsing="false" text="Studenci" />
-      <Button fx:id="btnGroupStudents" layoutX="248.0" layoutY="248.0" mnemonicParsing="false" text="Grupy studenckie" />
-      <Button fx:id="btnScheduleList" layoutX="113.0" layoutY="248.0" mnemonicParsing="false" text="Plan zajęć" />
-      <Label layoutX="134.0" layoutY="28.0" prefHeight="38.0" prefWidth="181.0" text="Elo dziekan!!">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0">
+         <children>
+            <Button fx:id="btnEmployee" layoutX="275.0" layoutY="100.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="150.0" text="Pracownicy">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnSubjectList" layoutX="275.0" layoutY="150.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="150.0" text="Lista przedmiotów">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnStudents" layoutX="275.0" layoutY="250.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="150.0" text="Studenci">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnScheduleList" layoutX="275.0" layoutY="200.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="150.0" text="Plan zajęć">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label alignment="CENTER" layoutX="100.0" layoutY="28.0" prefHeight="40.0" prefWidth="500.0" text="Szkoła Główna Gospodarstwa Wiejkiego">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
-</Pane>
+</StackPane>

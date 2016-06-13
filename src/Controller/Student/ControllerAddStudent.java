@@ -4,8 +4,7 @@ package Controller.Student;
 import Controller.Main;
 import Model.ConnectSql.DriverSqlStudent;
 import Model.Student.Student;
-import View.Student.MessagePanelStudent;
-import com.sun.javafx.image.IntPixelGetter;
+import View.MessagePanel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -42,22 +41,11 @@ public class ControllerAddStudent implements Initializable {
     private ChoiceBox<Integer> choiceBoxPeriod;
 
     @FXML
-    private RadioButton warunekTrue;
-
-    @FXML
     private RadioButton radioBtnFemale;
 
     @FXML
     private ChoiceBox<String> choiceBoxTitleStudy;
 
-    @FXML
-    private ToggleGroup warunek;
-
-    @FXML
-    private ChoiceBox<Integer> choiceBoxYear;
-
-    @FXML
-    private RadioButton warunekFalse;
 
     @FXML
     private Button btnSave;
@@ -71,8 +59,7 @@ public class ControllerAddStudent implements Initializable {
     @FXML
     private ChoiceBox<String> choiceBoxTryb;
 
-    @FXML
-    private ChoiceBox<String> choiceStudentGroup;
+
 
     @FXML
     void saveStudent(ActionEvent event) {
@@ -96,14 +83,12 @@ public class ControllerAddStudent implements Initializable {
         clearFields();
     }
 
-    MessagePanelStudent messagePanelStudent = new MessagePanelStudent();
+    MessagePanel messagePanel = new MessagePanel();
     DriverSqlStudent driverSqlStudent = new DriverSqlStudent();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setGroupList();
         setListaKierunkow();
         setListaTrybow();
-        setRocznik();
         setSemestr();
     }
 
@@ -113,12 +98,12 @@ public class ControllerAddStudent implements Initializable {
      * @return employe name
      */
     public String getFieldName(){
-        String nameEmploye = null;
-        nameEmploye = fieldName.getText();
-        if(nameEmploye == null){
-            messagePanelStudent.addStudentNoChoice("Nie wpisano imienia!");
+        String nameEmployee = null;
+        nameEmployee = fieldName.getText();
+        if(nameEmployee == null){
+            messagePanel.addNoChoice("Nie wpisano imienia!");
         }
-        return nameEmploye;
+        return nameEmployee;
     }
 
     /**
@@ -127,12 +112,12 @@ public class ControllerAddStudent implements Initializable {
      * @return employe surname
      */
     public String getStudentSurname(){
-        String surnameEmplye = null;
-        surnameEmplye = fieldSurname.getText();
-        if(surnameEmplye == null){
-            messagePanelStudent.addStudentNoChoice("Nie wpisano nazwiska!");
+        String surnameEmployee = null;
+        surnameEmployee = fieldSurname.getText();
+        if(surnameEmployee == null){
+            messagePanel.addNoChoice("Nie wpisano nazwiska!");
         }
-        return surnameEmplye;
+        return surnameEmployee;
     }
 
 
@@ -146,7 +131,7 @@ public class ControllerAddStudent implements Initializable {
         String birthDateStudent = null;
 
         if(bornDate.getValue() == null){
-            messagePanelStudent.addStudentNoChoice("Nie wybrano daty urodzenia!");
+            messagePanel.addNoChoice("Nie wybrano daty urodzenia!");
         } else {
             birthDateStudent = bornDate.getValue().toString();
         }
@@ -160,12 +145,12 @@ public class ControllerAddStudent implements Initializable {
      * Nie można zapisać bez wybrou jednej z dwóch opcji.
      * @return genderChoice
      */
-    private char getGenderChoice(){
-        char gender = 0;
+    private String getGenderChoice(){
+        String gender = null;
 
-        if (radioBtnFemale.isSelected()) gender = 'M';
-        else if (radioBtnMale.isSelected()) gender = 'K';
-        else messagePanelStudent.addStudentNoChoice("Ooops, nie wybrałeś płci" );
+        if (radioBtnFemale.isSelected()) gender = "K";
+        else if (radioBtnMale.isSelected()) gender = "M";
+        else messagePanel.addNoChoice("Ooops, nie wybrałeś płci");
         return gender;
     }
 
@@ -180,27 +165,11 @@ public class ControllerAddStudent implements Initializable {
         radioBtnFemale.setSelected(false);
         choiceBoxTitleStudy.setValue(null);
         choiceBoxTryb.setValue(null);
-        choiceBoxYear.setValue(null);
         choiceBoxPeriod.setValue(null);
-        warunekFalse.setSelected(false);
-        warunekTrue.setSelected(false);
     }
 
 
-    /**
-     * metoda na podstawie wyboru nazwy grupy pobiera idGrupy z bazy
-     * @return idGrzoup
-     */
-    private int getIdGroup(){
-        int idGroup = 0;
-        String nameGroup = choiceStudentGroup.getValue();
-        if(nameGroup.isEmpty()){
-            messagePanelStudent.showErrorMessage("Nie wybrano grupy");
-        } else {
-            idGroup = driverSqlStudent.getIdGroup(nameGroup);
-        }
-        return idGroup;
-    }
+
 
     /**
      * metoda zwracająca id kierunku na podstawie wybranej nazwy
@@ -210,7 +179,7 @@ public class ControllerAddStudent implements Initializable {
         int idKierunku = 0;
         String nazwaKierunku = choiceBoxTitleStudy.getValue();
         if(nazwaKierunku.isEmpty()) {
-            messagePanelStudent.showErrorMessage("Nie wybrano kierunku");
+            messagePanel.addNoChoice("Nie wybrano kierunku");
         } else {
             idKierunku = driverSqlStudent.getIdKierunku(nazwaKierunku);
         }
@@ -221,41 +190,22 @@ public class ControllerAddStudent implements Initializable {
      *
      * @return
      */
-    private int getIdTrybu(){
-        int idTrybu = 0;
+    private String getTryb(){
         String nazwaTrybu = choiceBoxTryb.getValue();
         if(nazwaTrybu.isEmpty()){
-            messagePanelStudent.showErrorMessage("Nie wybrano trybu");
-        } else {
-            idTrybu = driverSqlStudent.getIdTrybu(choiceBoxTryb.getValue());
+            messagePanel.addNoChoice("Nie wybrano trybu");
         }
-        return idTrybu;
+        return nazwaTrybu;
     }
 
-    private int getRok(){
-        int rok = 0;
-        rok = choiceBoxYear.getValue();
-        if(rok == 0){
-            messagePanelStudent.showErrorMessage("Nie wybrano rocznika");
-        }
-        return rok;
-    }
 
     private int getSemestr(){
         int nrSemestru = 0;
-        nrSemestru = choiceBoxYear.getValue();
+        nrSemestru = choiceBoxPeriod.getValue();
         if(nrSemestru == 0){
-            messagePanelStudent.showErrorMessage("Nie wybrano semestru");
+            messagePanel.addNoChoice("Nie wybrano semestru");
         }
         return nrSemestru;
-    }
-
-    private boolean getCzyWarunek(){
-        boolean czyMaWarunek = false;
-        if(warunekTrue.isSelected()) czyMaWarunek = true;
-        else if(warunekFalse.isSelected()) czyMaWarunek = false;
-        else messagePanelStudent.addStudentNoChoice("Czy ma warunek?");
-        return czyMaWarunek;
     }
 
 
@@ -267,28 +217,16 @@ public class ControllerAddStudent implements Initializable {
                 ,getStudentSurname()
                 ,getBornDate()
                 ,getGenderChoice()
-                ,getIdTrybu()
+                ,getTryb()
                 ,getIdKierunku()
-                ,getIdGroup()
-                ,getRok()
-                ,getSemestr()
-                ,getCzyWarunek());
+                ,getSemestr());
         driverSqlStudent.insertStudent(student);
         clearFields();
-        messagePanelStudent.showInformationMessage("Student został dodany");
+        messagePanel.showInformationMessage("Student został dodany");
 
     }
 
-    /**
-     * metoda pobierająca listę grup studenckich z bazy
-     */
-    private void setGroupList(){
-        ArrayList<String> groupList;
-        choiceStudentGroup.setTooltip(new Tooltip("Wybierz grupę dla studenta"));
-        groupList = driverSqlStudent.getGroupList();
-        ObservableList<String> groupObservableList = FXCollections.observableList(groupList);
-        choiceStudentGroup.setItems(groupObservableList);
-    }
+
 
     private void setListaKierunkow(){
         ArrayList<String> listaKierunkow;
@@ -299,23 +237,14 @@ public class ControllerAddStudent implements Initializable {
     }
 
     private void setListaTrybow(){
-        ArrayList<String> listaTrybow;
+        ArrayList<String> listaTrybow = new ArrayList<>();
+        listaTrybow.add("Stacjonarne");
+        listaTrybow.add("Niestacjonarne");
         choiceBoxTryb.setTooltip(new Tooltip("Wybierz tryb"));
-        listaTrybow = driverSqlStudent.getListeTrybow();
         ObservableList<String> trybyObservableList = FXCollections.observableList(listaTrybow);
         choiceBoxTryb.setItems(trybyObservableList);
     }
 
-    private void setRocznik(){
-        ArrayList<Integer> roczniki = new ArrayList<>();
-        roczniki.add(1);
-        roczniki.add(2);
-        roczniki.add(3);
-        roczniki.add(4);
-        choiceBoxYear.setTooltip(new Tooltip("Wybierz rocznik"));
-        ObservableList<Integer> rocznikObservableList = FXCollections.observableList(roczniki);
-        choiceBoxYear.setItems(rocznikObservableList);
-    }
 
     private void setSemestr(){
         ArrayList<Integer> semestr = new ArrayList<>();
@@ -326,6 +255,7 @@ public class ControllerAddStudent implements Initializable {
         semestr.add(5);
         semestr.add(6);
         semestr.add(7);
+        semestr.add(8);
         choiceBoxPeriod.setTooltip(new Tooltip("wybierz semestr"));
         ObservableList<Integer> semestrObservableList = FXCollections.observableList(semestr);
         choiceBoxPeriod.setItems(semestrObservableList);

@@ -2,9 +2,10 @@ package Controller.Employee;
 
 
 import Controller.Main;
+import Model.ConnectSql.DriverSqlCathedral;
 import Model.ConnectSql.DriverSqlEmployee;
 import Model.Employee.Employee;
-import View.Employee.MessagePanelEmployee;
+import View.MessagePanel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -72,9 +73,10 @@ public class ControllerEditEmployee implements Initializable {
     }
 
     DriverSqlEmployee driverSqlEmployee = new DriverSqlEmployee();
+    DriverSqlCathedral driverSqlCathedral = new DriverSqlCathedral();
     ArrayList<String> cathedralListChoiceBox;
     Employee employee;
-    MessagePanelEmployee messagePanelEmployee = new MessagePanelEmployee();
+    MessagePanel messagePanel = new MessagePanel();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -121,7 +123,7 @@ public class ControllerEditEmployee implements Initializable {
         String nameEmploye = null;
         nameEmploye = fieldName.getText();
         if(nameEmploye == null){
-            messagePanelEmployee.addEmployeNoChoice("Nie wpisano imienia!");
+            messagePanel.addNoChoice("Nie wpisano imienia!");
         }
         return nameEmploye;
     }
@@ -136,7 +138,7 @@ public class ControllerEditEmployee implements Initializable {
         String surnameEmplye = null;
         surnameEmplye = fieldSurname.getText();
         if(surnameEmplye == null){
-            messagePanelEmployee.addEmployeNoChoice("Nie wpisano nazwiska!");
+            messagePanel.addNoChoice("Nie wpisano nazwiska!");
         }
         return surnameEmplye;
     }
@@ -159,7 +161,7 @@ public class ControllerEditEmployee implements Initializable {
      */
     private int getCathedral(){
         String choiceCathedralTemp = choiceCathedral.getValue();
-        int idCathedral = driverSqlEmployee.getIdCathedral(choiceCathedralTemp);
+        int idCathedral = driverSqlCathedral.getIdCathedral(choiceCathedralTemp);
         return idCathedral;
     }
 
@@ -175,7 +177,7 @@ public class ControllerEditEmployee implements Initializable {
 
         if (choiceGenderMale.isSelected()) gender = 'M';
         else if (choiceGenderFemale.isSelected()) gender = 'K';
-        else messagePanelEmployee.addEmployeNoChoice("Ooops, nie wybra³eœ p³ci" );
+        else  messagePanel.addNoChoice("Ooops, nie wybra³eœ p³ci");
         return gender;
     }
 
@@ -190,7 +192,7 @@ public class ControllerEditEmployee implements Initializable {
         boolean managerChoice = false;
         if(choiceManagerTrue.isSelected()) managerChoice = true;
         else if(choiceManagerFalse.isSelected()) managerChoice = false;
-        else messagePanelEmployee.addEmployeNoChoice("Ooops, czy nowy pracownik jest kierownikiem?");
+        else  messagePanel.addNoChoice("Ooops, czy nowy pracownik jest kierownikiem?");
         return managerChoice;
     }
 
@@ -206,7 +208,7 @@ public class ControllerEditEmployee implements Initializable {
         String birthDateEmploye = null;
 
         if(bornDate.getValue() == null){
-            messagePanelEmployee.addEmployeNoChoice("Nie wybrano daty urodzenia!");
+            messagePanel.addNoChoice("Nie wybrano daty urodzenia!");
         } else {
             birthDateEmploye = bornDate.getValue().toString();
         }
@@ -221,10 +223,10 @@ public class ControllerEditEmployee implements Initializable {
     private void addCathedralToChoiceBox(){
         cathedralListChoiceBox = new ArrayList<>();
         choiceCathedral.setTooltip(new Tooltip("Wybierz katedre"));
-        cathedralListChoiceBox = driverSqlEmployee.getCathedralList();
+        cathedralListChoiceBox = driverSqlCathedral.getCathedralList();
         ObservableList<String> cathedralObservableList = FXCollections.observableArrayList(cathedralListChoiceBox);
         choiceCathedral.setItems(cathedralObservableList);
-        String choiceValue = driverSqlEmployee.getCathedralById(employee.getIdCathedral());
+        String choiceValue = driverSqlCathedral.getCathedralById(employee.getIdCathedral());
         choiceCathedral.setValue(choiceValue);
 
     }
@@ -239,7 +241,7 @@ public class ControllerEditEmployee implements Initializable {
                 getCathedral(),
                 getFieldPensum());
         driverSqlEmployee.updateEmployee(editEmployee);
-        messagePanelEmployee.showInformationMessage("Pracownik zosta³ zapisany!");
+        messagePanel.showInformationMessage("Pracownik zosta³ zapisany!");
         Stage stage = (Stage) btnSave.getScene().getWindow();
         stage.close();
         Main.showMainWindow();

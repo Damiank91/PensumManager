@@ -1,7 +1,9 @@
 package Controller.Employee;
 
 import Controller.Main;
+import Model.ConnectSql.DriverSqlCathedral;
 import Model.ConnectSql.DriverSqlEmployee;
+import Model.ConnectSql.DriverSqlSubject;
 import Model.Employee.EmployeeTable;
 
 import javafx.collections.FXCollections;
@@ -95,7 +97,10 @@ public class ControllerSearchEmployee implements Initializable {
         alert.setContentText("Czy chcesz to zrobić?");
         Optional<ButtonType> result = alert.showAndWait();
         if(result.get() == ButtonType.OK){
-            driverSqlEmployee.deleteEmployee(getEditIdEmployee());
+            int idEmployee = getEditIdEmployee();
+            driverSqlEmployee.deleteEmployee(idEmployee);
+            driverSqlSubject.deleteEmployeeSubject(idEmployee);
+            addValueToTable();
         } else {
             alert.close();
         }
@@ -109,6 +114,8 @@ public class ControllerSearchEmployee implements Initializable {
     Parent parentEditEmployeeWindowPane;
     Scene sceneEditEmployeeWindow;
     DriverSqlEmployee driverSqlEmployee = new DriverSqlEmployee();
+    DriverSqlCathedral driverSqlCathedral = new DriverSqlCathedral();
+    DriverSqlSubject driverSqlSubject = new DriverSqlSubject();
     ArrayList<String> cathedralListChoiceBox;
 
     @Override
@@ -153,10 +160,9 @@ public class ControllerSearchEmployee implements Initializable {
 
 
     private void addCathedralToChoiceBox() {
-        driverSqlEmployee.getCathedralList();
         cathedralListChoiceBox = new ArrayList<>();
         choiceCathedral.setTooltip(new Tooltip("Wybierz katedre"));
-        cathedralListChoiceBox = driverSqlEmployee.getCathedralList();
+        cathedralListChoiceBox = driverSqlCathedral.getCathedralList();
         ObservableList<String> cathedralObservableList = FXCollections.observableArrayList(cathedralListChoiceBox);
         choiceCathedral.setItems(cathedralObservableList);
     }
