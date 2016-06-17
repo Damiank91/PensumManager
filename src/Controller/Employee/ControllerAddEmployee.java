@@ -132,19 +132,21 @@ public class ControllerAddEmployee implements Initializable {
      * metoda wykonująca czynność jeżeli użytkownik wybierze przycisk "Zapisz"
      */
     private void setDataInBase(){
-        Employee employee = new Employee(
-                getFieldName()
-                ,getFieldSurname()
-                ,getBirthDate()
-                ,getGenderChoice()
-                ,getManagerChoice()
-                ,getCathedral()
-                ,getFieldPensum());
-        driverSqlEmployee.insertEmployee(employee);
-        int idEmployee = driverSqlEmployee.getEmployeeByValue(employee);
-        driverSqlEmployee.saveEmloyeeSubject(subjectArrayList, idEmployee);
-        clearFields();
-        messagePanel.showInformationMessage("Nowy pracownik został zapisany!");
+        if(checkFieldsIsComplete()) {
+            Employee employee = new Employee(
+                    getFieldName()
+                    , getFieldSurname()
+                    , getBirthDate()
+                    , getGenderChoice()
+                    , getManagerChoice()
+                    , getCathedral()
+                    , getFieldPensum());
+            driverSqlEmployee.insertEmployee(employee);
+            int idEmployee = driverSqlEmployee.getEmployeeByValue(employee);
+            driverSqlEmployee.saveEmloyeeSubject(subjectArrayList, idEmployee);
+            clearFields();
+            messagePanel.showInformationMessage("Nowy pracownik został zapisany!");
+        }
     }
 
 
@@ -154,12 +156,7 @@ public class ControllerAddEmployee implements Initializable {
      * @return employe name
      */
     public String getFieldName(){
-        String nameEmployee = null;
-        nameEmployee = fieldName.getText();
-        if(nameEmployee == null){
-            messagePanel.addNoChoice("Nie wpisano imienia!");
-        }
-        return nameEmployee;
+        return fieldName.getText();
     }
 
 
@@ -169,12 +166,7 @@ public class ControllerAddEmployee implements Initializable {
      * @return employe surname
      */
     private String getFieldSurname(){
-        String surnameEmplye = null;
-        surnameEmplye = fieldSurname.getText();
-        if(surnameEmplye == null){
-            messagePanel.addNoChoice("Nie wpisano nazwiska!");
-        }
-        return surnameEmplye;
+        return fieldSurname.getText();
     }
 
 
@@ -184,12 +176,7 @@ public class ControllerAddEmployee implements Initializable {
      * zwracany typ int
      */
     private int getFieldPensum(){
-        int pensum = 0;
-        pensum = Integer.parseInt(fieldPensum.getText());
-        if(pensum == 0){
-            messagePanel.addNoChoice("nie wybrano pensum");
-        }
-        return pensum;
+        return Integer.parseInt(fieldPensum.getText());
     }
 
 
@@ -212,10 +199,8 @@ public class ControllerAddEmployee implements Initializable {
      */
     private char getGenderChoice(){
         char gender = 0;
-        
             if (choiceGenderMale.isSelected()) gender = 'M';
             else if (choiceGenderFemale.isSelected()) gender = 'K';
-        messagePanel.addNoChoice("Ooops, nie wybrałeś płci" );
         return gender;
     }
 
@@ -230,27 +215,16 @@ public class ControllerAddEmployee implements Initializable {
         boolean managerChoice = false;
         if(choiceManagerTrue.isSelected()) managerChoice = true;
         else if(choiceManagerFalse.isSelected()) managerChoice = false;
-        else messagePanel.addNoChoice("Ooops, czy nowy pracownik jest kierownikiem?");
         return managerChoice;
     }
 
 
     /**
      * Metoda zwraca datę urodzenia dodawanego pracownika
-     * Jeżeli nic nie wybrano wyświetla komunikat z ostrzeżeniem, że nie wybrano opcji.
-     * Nie można zapisać bez wyboru daty.
      * @return birthDate (YYYY-MM-DD)
      */
     private String getBirthDate(){
-
-        String birthDateEmploye = null;
-
-        if(bornDate.getValue() == null){
-            messagePanel.addNoChoice("Nie wybrano daty urodzenia!");
-        } else {
-            birthDateEmploye = bornDate.getValue().toString();
-        }
-        return birthDateEmploye;
+        return bornDate.getValue().toString();
     }
 
 
@@ -312,8 +286,46 @@ public class ControllerAddEmployee implements Initializable {
         choiceManagerFalse.setSelected(false);
         choiceManagerTrue.setSelected(false);
         fieldPensum.setText("");
-        subjectArrayList = null;
+        clearSubjectList();
         subjectTable.setItems(null);
+    }
+
+    private void clearSubjectList(){
+        for(int i=0; i < subjectArrayList.size(); i++){
+            subjectArrayList.remove(i);
+        }
+
+    }
+
+    private boolean checkFieldsIsComplete(){
+        boolean isComplete = true;
+        if(fieldName.getText().isEmpty()){
+            isComplete = false;
+            messagePanel.addNoChoice("Nie uzupełniono imienia!");
+        } else if(fieldSurname.getText().isEmpty()){
+            isComplete = false;
+            messagePanel.addNoChoice("Nie uzupełniono nazwiska!");
+        } else if(bornDate.getValue() == null){
+            isComplete = false;
+            messagePanel.addNoChoice("Nie wybrano daty urodzenia!");
+        } else if (!(choiceManagerFalse.isSelected() || choiceManagerTrue.isSelected())){
+            isComplete = false;
+            messagePanel.addNoChoice("Ooops, czy nowy pracownik jest kierownikiem?");
+        } else if (!(choiceGenderMale.isSelected() || choiceGenderFemale.isSelected())){
+            isComplete = false;
+            messagePanel.addNoChoice("Ooops, nie wybrałeś płci" );
+        } else if (fieldPensum.getText().isEmpty()){
+            isComplete = false;
+            messagePanel.addNoChoice("Nie wybrano pensum");
+        } else if(choiceCathedral.getValue()== null){
+            isComplete = false;
+            messagePanel.addNoChoice("Nie wybrano katedry");
+        } else if(subjectArrayList.isEmpty()){
+            isComplete = false;
+            messagePanel.addNoChoice("Nie wybrano przedmiotów dla pracownika");
+        }
+
+        return isComplete;
     }
 
 

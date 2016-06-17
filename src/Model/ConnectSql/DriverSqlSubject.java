@@ -250,8 +250,11 @@ public class DriverSqlSubject {
             //usuwam zewn�trzne znaki
             key = tempKey.substring(1, tempKey.length() - 1);
             value = valueSearch.get(key);
-
-            sqlQuery = sqlQuery + " where " + key + " like '" + value + "'";
+            if(value.equals("Informatyka")){
+                sqlQuery = sqlQuery + " where " + key + " like '" + value + "'";
+            } else{
+                sqlQuery = sqlQuery + " where " + key + " like '%" + value + "%'";
+            }
         } else if (valueSearch.size() == 2) {
 
             for (Map.Entry<String, String> entry : valueSearch.entrySet()) {
@@ -259,9 +262,17 @@ public class DriverSqlSubject {
                 value = valueSearch.get(key);
 
                 if (iterator != 1) {
-                    sqlQuery = sqlQuery + " where " + key + " like '" + value + "' and ";
+                    if(value.equals("Informatyka")){
+                        sqlQuery = sqlQuery + " where " + key + " like '" + value + "' and ";
+                    } else{
+                        sqlQuery = sqlQuery + " where " + key + " like '%" + value + "%' and ";
+                    }
                 } else {
-                    sqlQuery = sqlQuery + key + " like '" + value + "'";
+                    if(value.equals("Informatyka")){
+                        sqlQuery = sqlQuery + key + " like '" + value + "'";
+                    } else{
+                        sqlQuery = sqlQuery + key + " like '%" + value + "%'";
+                    }
                 }
                 iterator++;
             }

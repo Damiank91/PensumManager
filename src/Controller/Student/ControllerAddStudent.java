@@ -98,44 +98,24 @@ public class ControllerAddStudent implements Initializable {
      * @return employe name
      */
     public String getFieldName(){
-        String nameEmployee = null;
-        nameEmployee = fieldName.getText();
-        if(nameEmployee == null){
-            messagePanel.addNoChoice("Nie wpisano imienia!");
-        }
-        return nameEmployee;
+        return fieldName.getText();
     }
 
     /**
      * metoda pobierająca nazwisko dodawanego pracownika
-     * jeżeli pole jest puste wyświetlane jest okno z ostrzeżeniem o niewypełnieniu pola
      * @return employe surname
      */
     public String getStudentSurname(){
-        String surnameEmployee = null;
-        surnameEmployee = fieldSurname.getText();
-        if(surnameEmployee == null){
-            messagePanel.addNoChoice("Nie wpisano nazwiska!");
-        }
-        return surnameEmployee;
+        return fieldSurname.getText();
     }
 
 
     /**
      * Metoda zwraca datę urodzenia dodawanego pracownika
-     * Jeżeli nic nie wybrano wyświetla komunikat z ostrzeżeniem, że nie wybrano opcji.
-     * Nie można zapisać bez wyboru daty.
      * @return birthDate (YYYY-MM-DD)
      */
     public String getBornDate(){
-        String birthDateStudent = null;
-
-        if(bornDate.getValue() == null){
-            messagePanel.addNoChoice("Nie wybrano daty urodzenia!");
-        } else {
-            birthDateStudent = bornDate.getValue().toString();
-        }
-        return birthDateStudent;
+        return bornDate.getValue().toString();
     }
 
 
@@ -147,10 +127,8 @@ public class ControllerAddStudent implements Initializable {
      */
     private String getGenderChoice(){
         String gender = null;
-
         if (radioBtnFemale.isSelected()) gender = "K";
         else if (radioBtnMale.isSelected()) gender = "M";
-        else messagePanel.addNoChoice("Ooops, nie wybrałeś płci");
         return gender;
     }
 
@@ -166,6 +144,7 @@ public class ControllerAddStudent implements Initializable {
         choiceBoxTitleStudy.setValue(null);
         choiceBoxTryb.setValue(null);
         choiceBoxPeriod.setValue(null);
+        bornDate.setValue(null);
     }
 
 
@@ -178,11 +157,7 @@ public class ControllerAddStudent implements Initializable {
     private int getIdKierunku() {
         int idKierunku = 0;
         String nazwaKierunku = choiceBoxTitleStudy.getValue();
-        if(nazwaKierunku.isEmpty()) {
-            messagePanel.addNoChoice("Nie wybrano kierunku");
-        } else {
-            idKierunku = driverSqlStudent.getIdKierunku(nazwaKierunku);
-        }
+        idKierunku = driverSqlStudent.getIdKierunku(nazwaKierunku);
         return idKierunku;
     }
 
@@ -191,21 +166,12 @@ public class ControllerAddStudent implements Initializable {
      * @return
      */
     private String getTryb(){
-        String nazwaTrybu = choiceBoxTryb.getValue();
-        if(nazwaTrybu.isEmpty()){
-            messagePanel.addNoChoice("Nie wybrano trybu");
-        }
-        return nazwaTrybu;
+        return choiceBoxTryb.getValue();
     }
 
 
     private int getSemestr(){
-        int nrSemestru = 0;
-        nrSemestru = choiceBoxPeriod.getValue();
-        if(nrSemestru == 0){
-            messagePanel.addNoChoice("Nie wybrano semestru");
-        }
-        return nrSemestru;
+        return choiceBoxPeriod.getValue();
     }
 
 
@@ -213,17 +179,18 @@ public class ControllerAddStudent implements Initializable {
      * metoda wykonująca czynność jeżeli użytkownik wybierze przycisk "Zapisz"
      */
     private void setDataInBase(){
-        Student student = new Student(getFieldName()
-                ,getStudentSurname()
-                ,getBornDate()
-                ,getGenderChoice()
-                ,getTryb()
-                ,getIdKierunku()
-                ,getSemestr());
-        driverSqlStudent.insertStudent(student);
-        clearFields();
-        messagePanel.showInformationMessage("Student został dodany");
-
+        if(checkFieldsIsComplete()){
+            Student student = new Student(getFieldName()
+                    ,getStudentSurname()
+                    ,getBornDate()
+                    ,getGenderChoice()
+                    ,getTryb()
+                    ,getIdKierunku()
+                    ,getSemestr());
+            driverSqlStudent.insertStudent(student);
+            clearFields();
+            messagePanel.showInformationMessage("Student został dodany");
+        }
     }
 
 
@@ -260,6 +227,35 @@ public class ControllerAddStudent implements Initializable {
         ObservableList<Integer> semestrObservableList = FXCollections.observableList(semestr);
         choiceBoxPeriod.setItems(semestrObservableList);
 
+    }
+
+    private boolean checkFieldsIsComplete(){
+        boolean isComplete = true;
+
+        if(fieldName.getText().isEmpty()){
+            isComplete = false;
+            messagePanel.addNoChoice("Wpisz imie!");
+        } else if(fieldSurname.getText().isEmpty()){
+            isComplete = false;
+            messagePanel.addNoChoice("Wpisz nazwisko!");
+        } else if(bornDate.getValue() == null){
+            isComplete = false;
+            messagePanel.addNoChoice("Nie wybrano daty urodzenia");
+        } else if(!(radioBtnMale.isSelected() || radioBtnFemale.isSelected())){
+            isComplete = false;
+            messagePanel.addNoChoice("Nie wybrano płci");
+        } else if(choiceBoxTitleStudy.getValue() == null){
+            isComplete = false;
+            messagePanel.addNoChoice("Nie wybrano kierunku");
+        } else if(choiceBoxTryb.getValue() == null){
+            isComplete = false;
+            messagePanel.addNoChoice("Nie wybrano trybu");
+        } else if(choiceBoxPeriod.getValue() == null){
+            isComplete = false;
+            messagePanel.addNoChoice("Nie wybrano semestru");
+        }
+
+        return isComplete;
     }
 
 }

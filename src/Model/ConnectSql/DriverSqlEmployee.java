@@ -131,8 +131,12 @@ public class DriverSqlEmployee {
                 //usuwam zewnętrzne znaki
                 key = tempKey.substring(1, tempKey.length() - 1);
                 value = valueSearch.get(key);
+                    if(value.equals("Informatyka")){
+                        sqlQuery = sqlQuery + " where " + key + " like '" + value + "'";
+                    } else{
+                        sqlQuery = sqlQuery + " where " + key + " like '%" + value + "%'";
+                    }
 
-                sqlQuery = sqlQuery + " where " + key + " like '%" + value + "%'";
         } else if(valueSearch.size() == 2){
 
                 for(Map.Entry<String, String> entry : valueSearch.entrySet()){
@@ -140,9 +144,18 @@ public class DriverSqlEmployee {
                     value = valueSearch.get(key);
 
                     if(iterator != 1){
-                        sqlQuery = sqlQuery + " where " + key + " like '%" + value + "%' and ";
+                        if(value.equals("Informatyka")){
+                            sqlQuery = sqlQuery + " where " + key + " like '" + value + "' and ";
+                        } else{
+                            sqlQuery = sqlQuery + " where " + key + " like '%" + value + "%' and ";
+                        }
                     } else {
-                        sqlQuery = sqlQuery + key + " like '%" + value + "%'";
+                        if(value.equals("Informatyka")){
+                            sqlQuery = sqlQuery + key + " like '" + value + "'";
+                        } else{
+                            sqlQuery = sqlQuery + key + " like '%" + value + "%'";
+                        }
+
                     }
                     iterator++;
                 }
@@ -152,10 +165,21 @@ public class DriverSqlEmployee {
                 value = valueSearch.get(key);
 
                 if (iterator == 0) {
-                    sqlQuery = sqlQuery + " where " + key + " like '%" + value + "%' and ";
+                    if(value.equals("Informatyka")){
+                        sqlQuery = sqlQuery + " where " + key + " like '" + value + "' and ";
+                    } else{
+                        sqlQuery = sqlQuery + " where " + key + " like '%" + value + "%' and ";
+                    }
+
                 } else if(iterator == 1) {
-                    sqlQuery = sqlQuery + key + " like '%" + value + "%' and ";
+                    if(value.equals("Informatyka")){
+                        sqlQuery = sqlQuery + key + " like '" + value + "' and ";
+                    } else{
+                        sqlQuery = sqlQuery + key + " like '%" + value + "%' and ";
+                    }
+
                 } else {
+
                     sqlQuery = sqlQuery + key + " = '" + value + "'";
                 }
                 iterator++;

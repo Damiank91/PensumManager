@@ -46,10 +46,13 @@ public class ControllerAddSubject implements Initializable {
     }
 
     private void saveSubject(){
-        int idCathedral = driverSqlCathedral.getIdCathedral(choiceBoxCathedral.getValue());
-        String nameSubject = fieldSubjectName.getText();
-        Subject subject = new Subject(nameSubject, idCathedral);
-        saveInBase(subject);
+        if(checkFieldIsComplete()) {
+            int idCathedral = driverSqlCathedral.getIdCathedral(choiceBoxCathedral.getValue());
+            String nameSubject = fieldSubjectName.getText();
+            Subject subject = new Subject(nameSubject, idCathedral);
+            saveInBase(subject);
+            
+        }
     }
 
     private void backToMainSubjectWindow(){
@@ -58,7 +61,7 @@ public class ControllerAddSubject implements Initializable {
     }
 
     /**
-     * metoda pobiera z bazy list� katedr to choiceBox
+     * metoda pobiera z bazy listę katedr to choiceBox
      */
     private void addCathedralToChoiceBox(){
         choiceBoxCathedral.setTooltip(new Tooltip("Wybierz katedre"));
@@ -76,5 +79,19 @@ public class ControllerAddSubject implements Initializable {
     private void clearFields(){
         choiceBoxCathedral.setValue(null);
         fieldSubjectName.setText("");
+    }
+
+    private boolean checkFieldIsComplete(){
+        boolean isComplete = true;
+
+        if(fieldSubjectName.getText().isEmpty()){
+            isComplete = false;
+            messagePanel.addNoChoice("Nie uzupełniono nazwy!");
+        } else if (choiceBoxCathedral.getValue() == null){
+            isComplete = false;
+            messagePanel.addNoChoice("Nie wybrano katedry");
+        }
+
+        return isComplete;
     }
 }

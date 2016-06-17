@@ -13,8 +13,8 @@ public class MessagePanel {
 
     public void addNoChoice(String contentText){
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Ostrze¿enie");
-        alert.setHeaderText("Wyst¹pi³ b³¹d podczas zapisu danych");
+        alert.setTitle("OstrzeÅ¼enie");
+        alert.setHeaderText("WystÄ…piÅ‚ bÅ‚Ä…d podczas zapisu danych");
         alert.setContentText(contentText);
         alert.showAndWait();
     }
