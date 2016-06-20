@@ -103,7 +103,7 @@ public class DriverSqlScheduleSubject {
             preparedStatement.setInt(1, scheduleSubject.getIdEmployee());
             preparedStatement.setInt(2, scheduleSubject.getIdRoom());
             preparedStatement.setInt(3, scheduleSubject.getIdSubject());
-            preparedStatement.setInt(4, scheduleSubject.getIdRoom());
+            preparedStatement.setInt(4, scheduleSubject.getIdDaysWeek());
             preparedStatement.setInt(5, scheduleSubject.getIdTimeWork());
             preparedStatement.executeUpdate();
         } catch (Exception ex){
@@ -111,9 +111,64 @@ public class DriverSqlScheduleSubject {
         } finally {
             closeDriverSql();
         }
+    }
+
+    public int checkIsExist(int idDay, int idTime){
+        String sql = "select id from pensum.plan_zajec where id_dnia_tygodnia = ? and id_godziny = ?";
+        connectWithDataBase();
+        int idSchedule = 0;
+        try{
+            preparedStatement = myConnect.prepareStatement(sql);
+            preparedStatement.setInt(1,idDay);
+            preparedStatement.setInt(2,idTime);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                idSchedule = resultSet.getInt(1);
+            }
+        } catch (Exception ex){
+
+        }finally {
+            closeDriverSql();
+        }
+        return idSchedule;
+    }
 
 
+    public int getIdScheduleByChoice(ScheduleSubject scheduleSubject){
+        int idSchedule = 0;
+        String sql = "select id from pensum.plan_zajec where id_pracownika = ? and id_sali = ? and id_przedmiotu = ? and id_dnia_tygodnia = ? and id_godziny = ?";
+        connectWithDataBase();
+        try{
+            preparedStatement = myConnect.prepareStatement(sql);
+            preparedStatement.setInt(1, scheduleSubject.getIdEmployee());
+            preparedStatement.setInt(2, scheduleSubject.getIdRoom());
+            preparedStatement.setInt(3, scheduleSubject.getIdSubject());
+            preparedStatement.setInt(4, scheduleSubject.getIdDaysWeek());
+            preparedStatement.setInt(5, scheduleSubject.getIdTimeWork());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                idSchedule = resultSet.getInt(1);
+            }
+        }catch (Exception ex){
 
+        }finally {
+            closeDriverSql();
+        }
+        return idSchedule;
+    }
+
+    public void deleteScheduleSubject(int idSchedule){
+        String sql = "delete from pensum.plan_zajec where id = ?";
+        connectWithDataBase();
+        try{
+            preparedStatement = myConnect.prepareStatement(sql);
+            preparedStatement.setInt(1,idSchedule);
+            preparedStatement.executeUpdate();
+        } catch (Exception ex){
+
+        }finally {
+            closeDriverSql();
+        }
     }
 
 

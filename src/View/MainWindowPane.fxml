@@ -10,29 +10,21 @@
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0">
          <children>
-            <Button fx:id="btnEmployee" layoutX="275.0" layoutY="100.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="150.0" text="Pracownicy">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="btnSubjectList" layoutX="275.0" layoutY="150.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="150.0" text="Lista przedmiotów">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="btnStudents" layoutX="275.0" layoutY="250.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="150.0" text="Studenci">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="btnScheduleList" layoutX="275.0" layoutY="200.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="150.0" text="Plan zajęć">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Label alignment="CENTER" layoutX="100.0" layoutY="28.0" prefHeight="40.0" prefWidth="500.0" text="Szkoła Główna Gospodarstwa Wiejkiego">
+            <Label alignment="CENTER" layoutX="85.0" layoutY="46.0" prefHeight="40.0" prefWidth="500.0" text="Szkoła Główna Gospodarstwa Wiejkiego">
                <font>
                   <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnKierownik" layoutX="335.0" layoutY="238.0" mnemonicParsing="false" text="Kierownik" />
+            <Button fx:id="btnDziekan" layoutX="335.0" layoutY="175.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="Dziekan" />
+            <Label layoutX="165.0" layoutY="241.0" text="Panel kierownika">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="165.0" layoutY="174.0" prefHeight="27.0" prefWidth="101.0" text="Panel dziekana">
+               <font>
+                  <Font size="14.0" />
                </font>
             </Label>
          </children>

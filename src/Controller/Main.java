@@ -20,11 +20,15 @@ public class Main extends Application {
 
     //okno dla scene
     //employee
-    private Parent parentMainWindow;
+
     private Parent parentEmployeeWindowPane;
     private Parent parentAddEmployeeWindowPane;
     private Parent parentSearchEmployeeWindowPane;
 
+    //mainWindow
+    private Parent parentMainWindow;
+    private Parent parentMainWindowDziekan;
+    private Parent parentMainWindowKierownik;
 
 
     //student
@@ -42,8 +46,13 @@ public class Main extends Application {
 
 
     //okno w ktorym znajduje sie layout
-    //emplyee
+
+    //mainWindow
     private static Scene sceneMainWindow;
+    private static Scene sceneMainWindowDziekan;
+    private static Scene sceneMainWindowKierownik;
+
+    //emplyee
     private static Scene sceneEmployeeWindow;
     private static Scene sceneAddEmployeeWindow;
     private static Scene sceneSearchEmployeeWindow;
@@ -68,8 +77,10 @@ public class Main extends Application {
 
         initializeParent();
 
-
+        //mainWindow
         sceneMainWindow = new Scene(parentMainWindow);
+        sceneMainWindowDziekan = new Scene(parentMainWindowDziekan);
+        sceneMainWindowKierownik = new Scene(parentMainWindowKierownik);
 
         //Emloyee
         sceneEmployeeWindow = new Scene(parentEmployeeWindowPane);
@@ -99,8 +110,12 @@ public class Main extends Application {
     //metoda inicjalizuj¹ca wszystkie pliki fxml w celu ich wyœwietlenia
     private void initializeParent(){
         try{
-            //employee
+            //main
             parentMainWindow = (Parent) FXMLLoader.load(getClass().getResource("/View/MainWindowPane.fxml"));
+            parentMainWindowKierownik = (Parent) FXMLLoader.load(getClass().getResource("/View/MainWindowPaneKierownik.fxml"));
+            parentMainWindowDziekan = (Parent) FXMLLoader.load(getClass().getResource("/View/MainWindowPaneDziekan.fxml"));
+
+            //employee
             parentEmployeeWindowPane = (Parent)FXMLLoader.load(getClass().getResource("/View/Employee/EmployeeWindowPane.fxml"));
             parentAddEmployeeWindowPane = (Parent)FXMLLoader.load(getClass().getResource("/View/Employee/AddEmployee.fxml"));
             parentSearchEmployeeWindowPane = (Parent)FXMLLoader.load(getClass().getResource("/View/Employee/SearchEmployee.fxml"));
@@ -131,11 +146,19 @@ public class Main extends Application {
         window.setY(100);
     }
 
+    public static void setSceneMainWindowDziekan(){
+        window.setScene(sceneMainWindowDziekan);
+    }
+
+    public static void setSceneMainWindowKierownik(){
+        window.setScene(sceneMainWindowKierownik);
+    }
 
     //employee windows
     public static void setSceneEmployeeWindow(){
         window.setScene(sceneEmployeeWindow);
     }
+
 
     public static void setSceneAddEmployeeWindow(){
         window.setScene(sceneAddEmployeeWindow);

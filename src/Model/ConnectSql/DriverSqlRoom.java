@@ -99,14 +99,17 @@ public class DriverSqlRoom {
         return idRoom;
     }
 
-    public String getIdRoomById(int idRoom){
-        String sql = "select id from pensum.sala where id= '"+ idRoom + "' limit 1";
+    public String getRoomById(int idRoom){
+        String sql = "select numer_sali from pensum.sala where id= ? limit 1";
         connectWithDataBase();
         String nameRoom = null;
         try{
             preparedStatement = myConnect.prepareStatement(sql);
+            preparedStatement.setInt(1,idRoom);
             ResultSet resultSet = preparedStatement.executeQuery();
-            idRoom = resultSet.getInt(1);
+            while(resultSet.next()){
+                nameRoom = resultSet.getString(1);
+            }
         } catch (Exception ex){
 
         }finally {

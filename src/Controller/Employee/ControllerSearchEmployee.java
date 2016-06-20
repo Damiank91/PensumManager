@@ -6,6 +6,7 @@ import Model.ConnectSql.DriverSqlEmployee;
 import Model.ConnectSql.DriverSqlSubject;
 import Model.Employee.EmployeeTable;
 
+import View.MessagePanel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,11 +27,6 @@ import java.util.*;
  * Created by Damian on 2016-04-21.
  */
 public class ControllerSearchEmployee implements Initializable {
-
-    /**
-     * - edytuj - wyswietla szczegóły pracownika z mozliwością usunięcia
-     * - usun - okno czy na pewno usunąć i usuwa z bazy
-     */
 
 
     @FXML
@@ -111,11 +107,13 @@ public class ControllerSearchEmployee implements Initializable {
     ArrayList<EmployeeTable> employeeTableArrayList = new ArrayList<>();
 
     private Stage window;
+    protected static int idEditEmployee;
     Parent parentEditEmployeeWindowPane;
     Scene sceneEditEmployeeWindow;
     DriverSqlEmployee driverSqlEmployee = new DriverSqlEmployee();
     DriverSqlCathedral driverSqlCathedral = new DriverSqlCathedral();
     DriverSqlSubject driverSqlSubject = new DriverSqlSubject();
+    MessagePanel messagePanel = new MessagePanel();
     ArrayList<String> cathedralListChoiceBox;
 
     @Override
@@ -172,9 +170,15 @@ public class ControllerSearchEmployee implements Initializable {
     public int getEditIdEmployee() {
         int idEmploye;
         EmployeeTable employeeTable = searchTable.getSelectionModel().getSelectedItem();
-        idEmploye = employeeTable.getIdEmployee();
+        if(employeeTable == null){
+            idEmploye = 0;
+        } else{
+            idEmploye = employeeTable.getIdEmployee();
+        }
+
         return  idEmploye;
     }
+
 
 
     private void getDataFromSql(){
@@ -183,15 +187,19 @@ public class ControllerSearchEmployee implements Initializable {
     }
 
     private void initliazeNewWindow() throws IOException {
-        String APP_NAME = "Pensum manager";
-        window = new Stage();
-        parentEditEmployeeWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/View/Employee/EditEmployee.fxml"));
-        sceneEditEmployeeWindow = new Scene(parentEditEmployeeWindowPane);
-        window.setScene(sceneEditEmployeeWindow);
-        window.setTitle(APP_NAME);
-        window.show();
-        Main.hideMainWIndow();
-
+        idEditEmployee = getEditIdEmployee();
+        if(idEditEmployee == 0){
+            messagePanel.showErrorMessage("Nie wskazano pracownika do edycji!");
+        } else {
+            String APP_NAME = "Pensum manager";
+            window = new Stage();
+            parentEditEmployeeWindowPane = (Parent) FXMLLoader.load(getClass().getResource("/View/Employee/EditEmployee.fxml"));
+            sceneEditEmployeeWindow = new Scene(parentEditEmployeeWindowPane);
+            window.setScene(sceneEditEmployeeWindow);
+            window.setTitle(APP_NAME);
+            window.show();
+            Main.hideMainWIndow();
+        }
     }
 
 
@@ -206,7 +214,7 @@ public class ControllerSearchEmployee implements Initializable {
             searchValues.put("imie_pracownika", getFieldName());
         }
         if (!getFieldSurname().isEmpty()) {
-            searchValues.put("nazwisko_pracownika",getFieldSurname());
+            searchValues.put("nazwisko_pracownika", getFieldSurname());
         }
         if (!(getChoiceCathedral() == null)){
             searchValues.put("nazwa_katedry",getChoiceCathedral());

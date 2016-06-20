@@ -61,6 +61,12 @@ public class ControllerEditEmployee implements Initializable {
     private TextField fieldPensum;
 
     @FXML
+    private ChoiceBox<String> choicePosition;
+
+    @FXML
+    private ChoiceBox<String> choiceAcademicDegree;
+
+    @FXML
     void closeButtonAction(ActionEvent event) {
         Stage stage = (Stage) btnExit.getScene().getWindow();
         stage.close();
@@ -77,6 +83,7 @@ public class ControllerEditEmployee implements Initializable {
     ArrayList<String> cathedralListChoiceBox;
     Employee employee;
     MessagePanel messagePanel = new MessagePanel();
+    ControllerSearchEmployee controllerSearchEmployee = new ControllerSearchEmployee();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -84,18 +91,10 @@ public class ControllerEditEmployee implements Initializable {
     }
 
     public void initializeWindow(){
-
-        employee = driverSqlEmployee.getEmployeeById(1);
+        employee = driverSqlEmployee.getEmployeeById(controllerSearchEmployee.idEditEmployee);
         fieldName.setText(employee.getName());
         fieldSurname.setText(employee.getSurname());
-        bornDate.setValue(LocalDate.now());
-        if(employee.getGender() == 'M'){
-            choiceGenderMale.setSelected(true);
-            choiceGenderFemale.setSelected(false);
-        } else {
-            choiceGenderMale.setSelected(false);
-            choiceGenderFemale.setSelected(true);
-        }
+
 
         if(employee.isManager() == true){
             choiceManagerTrue.setSelected(true);
@@ -105,9 +104,9 @@ public class ControllerEditEmployee implements Initializable {
             choiceManagerFalse.setSelected(true);
         }
 
-
+        addAcademicDegree(employee.getAcademicDegree());
         addCathedralToChoiceBox();
-
+        initializePosition(employee.getPosition());
         fieldPensum.setText(String.valueOf(employee.getPensum()));
 
     }
@@ -166,20 +165,6 @@ public class ControllerEditEmployee implements Initializable {
     }
 
 
-    /**
-     * Metoda sprawdza wybór czy dodawany pracownij jest kobiet¹ czy mê¿czyzn¹.
-     * Je¿eli nic nie wybrano wyœwietla komunikat z ostrze¿eniem, ¿e nie wybrano opcji.
-     * Nie mo¿na zapisaæ bez wybrou jednej z dwóch opcji.
-     * @return genderChoice
-     */
-    private char getGenderChoice(){
-        char gender = 0;
-
-        if (choiceGenderMale.isSelected()) gender = 'M';
-        else if (choiceGenderFemale.isSelected()) gender = 'K';
-        else  messagePanel.addNoChoice("Ooops, nie wybra³eœ p³ci");
-        return gender;
-    }
 
 
     /**
@@ -197,24 +182,13 @@ public class ControllerEditEmployee implements Initializable {
     }
 
 
-    /**
-     * Metoda zwraca datê urodzenia dodawanego pracownika
-     * Je¿eli nic nie wybrano wyœwietla komunikat z ostrze¿eniem, ¿e nie wybrano opcji.
-     * Nie mo¿na zapisaæ bez wyboru daty.
-     * @return birthDate (YYYY-MM-DD)
-     */
-    private String getBirthDate(){
-
-        String birthDateEmploye = null;
-
-        if(bornDate.getValue() == null){
-            messagePanel.addNoChoice("Nie wybrano daty urodzenia!");
-        } else {
-            birthDateEmploye = bornDate.getValue().toString();
-        }
-        return birthDateEmploye;
+    private String getAcademicDegree(){
+        return choiceAcademicDegree.getValue();
     }
 
+    private String getPosition(){
+        return choicePosition.getValue();
+    }
 
 
     /**
@@ -228,19 +202,41 @@ public class ControllerEditEmployee implements Initializable {
         choiceCathedral.setItems(cathedralObservableList);
         String choiceValue = driverSqlCathedral.getCathedralById(employee.getIdCathedral());
         choiceCathedral.setValue(choiceValue);
+    }
 
+    private void addAcademicDegree(String academicDegree){
+        ArrayList<String> academicDegreeList = new ArrayList<>();
+        academicDegreeList.add("mgr");
+        academicDegreeList.add("dr");
+        academicDegreeList.add("dr hab");
+        academicDegreeList.add("prof");
+        ObservableList<String> observableList = FXCollections.observableList(academicDegreeList);
+        choiceAcademicDegree.setItems(observableList);
+        choiceAcademicDegree.setValue(academicDegree);
+    }
+
+    private void initializePosition(String position){
+        ArrayList<String> posiotionList = new ArrayList<>();
+        posiotionList.add("asystent");
+        posiotionList.add("wyk³adowca");
+        posiotionList.add("starszy wyk³adowca");
+        posiotionList.add("adiunkt");
+        posiotionList.add("prof. nadzwyczajny");
+        ObservableList<String> observableList = FXCollections.observableList(posiotionList);
+        choicePosition.setItems(observableList);
+        choicePosition.setValue(position);
     }
 
     private void editEmployee(){
-        Employee editEmployee = new Employee(employee.getIdEmploye(),
-                getFieldName(),
-                getFieldSurname(),
-                getBirthDate(),
-                getGenderChoice(),
-                getManagerChoice(),
-                getCathedral(),
-                getFieldPensum());
-        driverSqlEmployee.updateEmployee(editEmployee);
+        Employee employee = new Employee(
+                getFieldName()
+                , getFieldSurname()
+                , getAcademicDegree()
+                , getPosition()
+                , getManagerChoice()
+                , getCathedral()
+                , getFieldPensum());
+        driverSqlEmployee.updateEmployee(employee);
         messagePanel.showInformationMessage("Pracownik zosta³ zapisany!");
         Stage stage = (Stage) btnSave.getScene().getWindow();
         stage.close();

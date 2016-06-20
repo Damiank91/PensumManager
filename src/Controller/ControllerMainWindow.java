@@ -1,5 +1,6 @@
 package Controller;
 
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -11,27 +12,19 @@ public class ControllerMainWindow implements Initializable {
 
 
     @FXML
-    private Button btnEmployee;
+    private Button btnDziekan;
 
     @FXML
-    private Button btnSubjectList;
-
-    @FXML
-    private Button btnStudents;
-
-    @FXML
-    private Button btnScheduleList;
-
-
+    private Button btnKierownik;
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        btnEmployee.setOnAction(event -> Main.setSceneEmployeeWindow());
-        btnStudents.setOnAction(event -> Main.setSceneStudentWindow());
-        btnScheduleList.setOnAction(event -> Main.setSceneScheduleWindow());
-        btnSubjectList.setOnAction(event -> Main.setSceneSubjectWindow());
+        btnDziekan.setOnAction(event -> Main.setSceneMainWindowDziekan());
+        btnKierownik.setOnAction(event -> Main.setSceneMainWindowKierownik());
 
     }
+
+
 }

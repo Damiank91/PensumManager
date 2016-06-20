@@ -52,19 +52,11 @@ public class ControllerAddEmployee implements Initializable {
     private RadioButton choiceManagerFalse;
 
     @FXML
-    private ToggleGroup gender;
-
-    @FXML
     private TextField fieldSurname;
 
     @FXML
     private RadioButton choiceManagerTrue;
 
-    @FXML
-    private DatePicker bornDate;
-
-    @FXML
-    private RadioButton choiceGenderFemale;
 
     @FXML
     private Button btnSave;
@@ -76,7 +68,10 @@ public class ControllerAddEmployee implements Initializable {
     private ChoiceBox<String> choiceSubject;
 
     @FXML
-    private RadioButton choiceGenderMale;
+    private ChoiceBox<String> choicePosition;
+
+    @FXML
+    private ChoiceBox<String> choiceAcademicDegree;
 
     @FXML
     private Button btnExit;
@@ -118,6 +113,8 @@ public class ControllerAddEmployee implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        initializeAcademicDegree();
+        initializePosition();
         addCathedralToChoiceBox();
         btnSave.setOnAction(event -> setDataInBase());
         btnClearField.setOnAction(event -> clearFields());
@@ -136,8 +133,8 @@ public class ControllerAddEmployee implements Initializable {
             Employee employee = new Employee(
                     getFieldName()
                     , getFieldSurname()
-                    , getBirthDate()
-                    , getGenderChoice()
+                    , getAcademicDegree()
+                    , getPosition()
                     , getManagerChoice()
                     , getCathedral()
                     , getFieldPensum());
@@ -191,17 +188,8 @@ public class ControllerAddEmployee implements Initializable {
     }
 
 
-    /**
-     * Metoda sprawdza wybór czy dodawany pracownij jest kobietą czy mężczyzną.
-     * Jeżeli nic nie wybrano wyświetla komunikat z ostrzeżeniem, że nie wybrano opcji.
-     * Nie można zapisać bez wybrou jednej z dwóch opcji.
-     * @return genderChoice
-     */
-    private char getGenderChoice(){
-        char gender = 0;
-            if (choiceGenderMale.isSelected()) gender = 'M';
-            else if (choiceGenderFemale.isSelected()) gender = 'K';
-        return gender;
+    private String getPosition(){
+        return choicePosition.getValue();
     }
 
 
@@ -219,12 +207,9 @@ public class ControllerAddEmployee implements Initializable {
     }
 
 
-    /**
-     * Metoda zwraca datę urodzenia dodawanego pracownika
-     * @return birthDate (YYYY-MM-DD)
-     */
-    private String getBirthDate(){
-        return bornDate.getValue().toString();
+
+    private String getAcademicDegree(){
+        return choiceAcademicDegree.getValue();
     }
 
 
@@ -252,7 +237,6 @@ public class ControllerAddEmployee implements Initializable {
         choiceSubject.setItems(subjectObservableList);
     }
 
-
     private void addSubjectToTable(){
 
         Subject subject = driverSqlSubject.getSubjectListByName(choiceSubject.getValue());
@@ -278,11 +262,10 @@ public class ControllerAddEmployee implements Initializable {
     private void clearFields(){
         fieldName.setText("");
         fieldSurname.setText("");
-        bornDate.setValue(null);
+        choiceAcademicDegree.setValue(null);
         choiceSubject.setValue(null);
         choiceCathedral.setValue(null);
-        choiceGenderMale.setSelected(false);
-        choiceGenderFemale.setSelected(false);
+        choicePosition.setValue(null);
         choiceManagerFalse.setSelected(false);
         choiceManagerTrue.setSelected(false);
         fieldPensum.setText("");
@@ -305,15 +288,15 @@ public class ControllerAddEmployee implements Initializable {
         } else if(fieldSurname.getText().isEmpty()){
             isComplete = false;
             messagePanel.addNoChoice("Nie uzupełniono nazwiska!");
-        } else if(bornDate.getValue() == null){
+        } else if(choiceAcademicDegree.getValue() == null){
             isComplete = false;
-            messagePanel.addNoChoice("Nie wybrano daty urodzenia!");
+            messagePanel.addNoChoice("Nie wybrano stopnia naukowego!");
         } else if (!(choiceManagerFalse.isSelected() || choiceManagerTrue.isSelected())){
             isComplete = false;
             messagePanel.addNoChoice("Ooops, czy nowy pracownik jest kierownikiem?");
-        } else if (!(choiceGenderMale.isSelected() || choiceGenderFemale.isSelected())){
+        } else if (choicePosition.getValue() == null){
             isComplete = false;
-            messagePanel.addNoChoice("Ooops, nie wybrałeś płci" );
+            messagePanel.addNoChoice("Ooops, nie wybrałeś stanowiska" );
         } else if (fieldPensum.getText().isEmpty()){
             isComplete = false;
             messagePanel.addNoChoice("Nie wybrano pensum");
@@ -327,6 +310,28 @@ public class ControllerAddEmployee implements Initializable {
 
         return isComplete;
     }
+
+    private void initializePosition(){
+        ArrayList<String> posiotionList = new ArrayList<>();
+        posiotionList.add("asystent");
+        posiotionList.add("wykładowca");
+        posiotionList.add("starszy wykładowca");
+        posiotionList.add("adiunkt");
+        posiotionList.add("prof. nadzwyczajny");
+        ObservableList<String> observableList = FXCollections.observableList(posiotionList);
+        choicePosition.setItems(observableList);
+    }
+
+    private void initializeAcademicDegree(){
+        ArrayList<String> academicDegreeList = new ArrayList<>();
+        academicDegreeList.add("mgr");
+        academicDegreeList.add("dr");
+        academicDegreeList.add("dr hab");
+        academicDegreeList.add("prof");
+        ObservableList<String> observableList = FXCollections.observableList(academicDegreeList);
+        choiceAcademicDegree.setItems(observableList);
+    }
+
 
 
     private void backToMainWindowScene(){

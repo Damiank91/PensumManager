@@ -24,14 +24,6 @@
                <font>
                   <Font name="System Italic" size="12.0" />
                </font></Label>
-            <Label layoutX="210.0" layoutY="165.0" text="Data urodzenia">
-               <font>
-                  <Font name="System Italic" size="12.0" />
-               </font></Label>
-            <Label layoutX="210.0" layoutY="205.0" text="Płeć">
-               <font>
-                  <Font name="System Italic" size="12.0" />
-               </font></Label>
             <Label layoutX="210.0" layoutY="245.0" text="Kierownik">
                <font>
                   <Font name="System Italic" size="12.0" />
@@ -56,20 +48,6 @@
             </Button>
             <TextField fx:id="fieldName" layoutX="300.0" layoutY="80.0" prefHeight="25.0" prefWidth="190.0" />
             <TextField fx:id="fieldSurname" layoutX="300.0" layoutY="120.0" prefHeight="25.0" prefWidth="190.0" />
-            <DatePicker fx:id="bornDate" layoutX="300.0" layoutY="160.0" prefHeight="25.0" prefWidth="190.0" />
-            <RadioButton fx:id="choiceGenderMale" layoutX="300.0" layoutY="200.0" mnemonicParsing="false" text="Mężczyzna">
-               <toggleGroup>
-                  <ToggleGroup fx:id="gender" />
-               </toggleGroup>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </RadioButton>
-            <RadioButton fx:id="choiceGenderFemale" layoutX="400.0" layoutY="200.0" mnemonicParsing="false" text="Kobiera" toggleGroup="$gender">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </RadioButton>
             <RadioButton fx:id="choiceManagerTrue" layoutX="300.0" layoutY="240.0" mnemonicParsing="false" text="Tak">
                <toggleGroup>
                   <ToggleGroup fx:id="manager" />
@@ -89,6 +67,18 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ChoiceBox>
+            <ChoiceBox fx:id="choiceAcademicDegree" layoutX="300.0" layoutY="160.0" prefHeight="25.0" prefWidth="190.0" />
+            <Label layoutX="207.0" layoutY="164.0" text="Stopień naukowy">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="213.0" layoutY="209.0" text="Stanowisko">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="choicePosition" layoutX="305.0" layoutY="205.0" prefHeight="25.0" prefWidth="190.0" />
          </children>
       </Pane>
    </children>

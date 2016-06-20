@@ -52,7 +52,7 @@ public class ControllerCreateSchedule implements Initializable {
     private GridPane gridRoom;
 
     @FXML
-    private Button btnClear;
+    private Button btnDelete;
 
     @FXML
     private ChoiceBox<String> choiceBoxSubject;
@@ -72,6 +72,7 @@ public class ControllerCreateSchedule implements Initializable {
     MessagePanel messagePanel = new MessagePanel();
     ArrayList<String> employeeList = null;
     ArrayList<String> roomList = null;
+    ObservableList<String> employeeObservableList;
 
 
     @Override
@@ -84,7 +85,7 @@ public class ControllerCreateSchedule implements Initializable {
         choiceBoxRoom.setOnAction(event -> addRoomToLabel(choiceBoxRoom.getValue()));
         btnSave.setOnAction(event -> saveEmployeeSchedule());
         btnExit.setOnAction(event -> backToScheduleMain());
-        btnClear.setOnAction(event -> clearChoiceBox());
+        btnDelete.setOnAction(event -> deleteChoiceSchedule());
     }
 
     private void initEmployeeLabel(){
@@ -95,6 +96,7 @@ public class ControllerCreateSchedule implements Initializable {
             for(int j=0; j < 8; j++){
                 employeeLabel[i][j]= (Label) children.get(t);
                 t++;
+
             }
         }
     }
@@ -111,22 +113,15 @@ public class ControllerCreateSchedule implements Initializable {
         }
     }
 
-    private void initEmployeeChoiceBox(){
+    public void initEmployeeChoiceBox(){
         employeeList = new ArrayList<>();
         choiceBoxEmployee.setTooltip(new Tooltip("Wybierz pracownika"));
         employeeList = driverSqlEmployee.getEmployee();
-        ObservableList<String> employeeObservableList = FXCollections.observableList(employeeList);
+        employeeObservableList = FXCollections.observableList(employeeList);
         choiceBoxEmployee.setItems(employeeObservableList);
-
     }
 
-    private void clearChoiceBox(){
-        choiceBoxEmployee.setValue(null);
-        choiceBoxRoom.setValue(null);
-        choiceBoxRoom.setValue(null);
-        choiceBoxTime.setValue(null);
-        choiceBoxDay.setValue(null);
-    }
+
 
     private void initRoomChoiceBox(){
         roomList = new ArrayList<>();
@@ -136,6 +131,9 @@ public class ControllerCreateSchedule implements Initializable {
         choiceBoxRoom.setItems(roomObservableList);
 
     }
+
+
+
 
     private void addEmployeeToLabel(String choiceEmployee){
         addNameToLabel(choiceEmployee);
@@ -168,9 +166,9 @@ public class ControllerCreateSchedule implements Initializable {
         for(int i=0; i <roomValue.size(); i++){
             int xPosition = roomValue.get(i).getIdDaysWeek();
             int yPosition = roomValue.get(i).getIdTimeWork();
-            String roomName = driverSqlSubject.getSubjectNameById(roomValue.get(i).getIdRoom());
+            String subjectName = driverSqlSubject.getSubjectNameById(roomValue.get(i).getIdSubject());
             Employee employee = driverSqlEmployee.getEmployeeById(roomValue.get(i).getIdEmployee());
-            String value = roomName + " -" + employee.getName() + " " + employee.getSurname();
+            String value = subjectName + " -" + employee.getName() + " " + employee.getSurname();
             roomLabel[xPosition][yPosition].setText(value);
         }
 
@@ -182,8 +180,9 @@ public class ControllerCreateSchedule implements Initializable {
             int xPosition = scheduleSubjects.get(i).getIdDaysWeek();
             int yPosition = scheduleSubjects.get(i).getIdTimeWork();
             String subjectName = driverSqlSubject.getSubjectNameById(scheduleSubjects.get(i).getIdSubject());
+            String roomName = driverSqlRoom.getRoomById(scheduleSubjects.get(i).getIdRoom());
 
-            employeeLabel[xPosition][yPosition].setText(subjectName);
+            employeeLabel[xPosition][yPosition].setText(subjectName + "-" + roomName);
         }
 
     }
@@ -230,21 +229,53 @@ public class ControllerCreateSchedule implements Initializable {
     }
 
     private void saveEmployeeSchedule(){
+        ScheduleSubject scheduleSubject = getChoiceSchedule();
+
+        if(!(scheduleSubject.getIdDaysWeek() == 0) && !(scheduleSubject.getIdTimeWork() == 0)) {
+            if(checkExistSchedule(scheduleSubject.getIdDaysWeek(), scheduleSubject.getIdTimeWork())){
+                driverSqlScheduleSubject.saveScheduleSubject(scheduleSubject);
+            } else {
+                messagePanel.showErrorMessage("Wybrany termin jest już zajęty!");
+            }
+            addEmployeeToLabel(choiceBoxEmployee.getValue());
+            addRoomToLabel(choiceBoxRoom.getValue());
+        } else if (scheduleSubject.getIdDaysWeek() == 0){
+            messagePanel.showErrorMessage("Nie wybrano dnia");
+        } else if (scheduleSubject.getIdTimeWork() == 0){
+            messagePanel.showErrorMessage("Nie wybrano godziny");
+        }
+    }
+
+    private ScheduleSubject getChoiceSchedule(){
         int idEmployee = driverSqlEmployee.getEmployeeByNameSurname(choiceBoxEmployee.getValue());
         int idRoom = driverSqlRoom.getIdRoomByName(choiceBoxRoom.getValue());
         int idSubject = driverSqlSubject.getSubjectNameByName(choiceBoxSubject.getValue());
         int idDay = driverSqlDaysWeek.getDayWeekByName(choiceBoxDay.getValue());
         int idTime = driverSqlTimeWork.getTimeWorkByName(choiceBoxTime.getValue());
-        if(!(idDay == 0) && !(idTime == 0)) {
-            ScheduleSubject scheduleSubject = new ScheduleSubject(idEmployee, idRoom, idSubject, idDay, idTime);
-            driverSqlScheduleSubject.saveScheduleSubject(scheduleSubject);
+        ScheduleSubject scheduleSubject = new ScheduleSubject(idEmployee, idRoom, idSubject, idDay, idTime);
+        return scheduleSubject;
+    }
+
+    private boolean checkExistSchedule(int idDay, int idTime){
+        boolean isNoExist = true;
+        int idSchedule = driverSqlScheduleSubject.checkIsExist(idDay, idTime);
+        if(idSchedule != 0){
+            isNoExist = false;
+        }
+        return isNoExist;
+    }
+
+    private void deleteChoiceSchedule(){
+        ScheduleSubject scheduleSubject = getChoiceSchedule();
+        int idScheduleSubject = driverSqlScheduleSubject.getIdScheduleByChoice(scheduleSubject);
+        if(idScheduleSubject != 0){
+            driverSqlScheduleSubject.deleteScheduleSubject(idScheduleSubject);
             addEmployeeToLabel(choiceBoxEmployee.getValue());
             addRoomToLabel(choiceBoxRoom.getValue());
-        } else if (idDay == 0){
-            messagePanel.showErrorMessage("Nie wybrano dnia");
-        } else if (idTime == 0){
-            messagePanel.showErrorMessage("Nie wybrano godziny");
+        } else {
+            messagePanel.showErrorMessage("Brak wyznaczonego terminu");
         }
+
     }
 
 

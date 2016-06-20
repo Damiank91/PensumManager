@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerMainWindowKierownik">
+   <children>
+      <Label layoutX="287.0" layoutY="45.0" text="Witaj" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnSubjectList" layoutX="253.0" layoutY="108.0" mnemonicParsing="false" text="Lista przedmiotów" textAlignment="CENTER" />
+      <Button fx:id="btnStudentList" layoutX="260.0" layoutY="168.0" mnemonicParsing="false" text="Lista studentów" textAlignment="CENTER" />
+      <Button fx:id="btnAddEmployee" layoutX="241.0" layoutY="232.0" mnemonicParsing="false" text="Dodawanie pracownika" textAlignment="CENTER" />
+      <Button fx:id="btnAddSubject" layoutX="235.0" layoutY="295.0" mnemonicParsing="false" text="Dodawanie przedmiotów" textAlignment="CENTER" />
+      <Button fx:id="btnExit" layoutX="285.0" layoutY="345.0" mnemonicParsing="false" text="Wyjdź" />
+   </children>
+</Pane>

@@ -8,8 +8,8 @@ public class Employee {
     private int idEmploye;
     private String name;
     private String surname;
-    private String birthDate;
-    private char gender;
+    private String academicDegree;
+    private String position;
     private boolean isManager;
     private int idCathedral;
     private int pensum;
@@ -40,20 +40,20 @@ public class Employee {
         this.surname = surname;
     }
 
-    public String getBirthDate() {
-        return birthDate;
+    public String getAcademicDegree() {
+        return academicDegree;
     }
 
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+    public void setAcademicDegree(String academicDegree) {
+        this.academicDegree = academicDegree;
     }
 
-    public char getGender() {
-        return gender;
+    public String getPosition() {
+        return position;
     }
 
-    public void setGender(char gender) {
-        this.gender = gender;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public boolean isManager() {
@@ -102,22 +102,22 @@ public class Employee {
         this.surname = surname;
     }
 
-    public Employee(String name, String surname, String birthDate, char gender, boolean isManager, int idCathedral,int pensum){
+    public Employee(String name, String surname, String academicDegree, String position, boolean isManager, int idCathedral,int pensum){
         this.name = name;
         this.surname = surname;
-        this.birthDate = birthDate;
-        this.gender = gender;
+        this.academicDegree = academicDegree;
+        this.position = position;
         this.isManager = isManager;
         this.idCathedral = idCathedral;
         this.pensum = pensum;
     }
-    public Employee(int idEmploye, String name, String surname, String birthDate, char gender, boolean isManager, int idCathedral,int pensum){
-        this(name,surname,birthDate,gender,isManager,idCathedral,pensum);
+    public Employee(int idEmploye, String name, String surname, String academicDegree, String position, boolean isManager, int idCathedral,int pensum){
+        this(name,surname,academicDegree,position,isManager,idCathedral,pensum);
         this.idEmploye = idEmploye;
     }
 
-    public Employee(int idEmploye, String name, String surname, String birthDate, char gender, boolean isManager, int idCathedral,int pensum, String insert_time) {
-        this(idEmploye, name, surname,birthDate, gender,isManager,idCathedral,pensum);
+    public Employee(int idEmploye, String name, String surname,  String academicDegree, String position, boolean isManager, int idCathedral,int pensum, String insert_time) {
+        this(idEmploye, name, surname,academicDegree,position,isManager,idCathedral,pensum);
         this.insert_time = insert_time;
 
     }
@@ -125,11 +125,11 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "idEmploye='" + idEmploye + '\'' +
+                "idEmploye=" + idEmploye +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", birthDate='" + birthDate + '\'' +
-                ", gender=" + gender +
+                ", academicDegree='" + academicDegree + '\'' +
+                ", position='" + position + '\'' +
                 ", isManager=" + isManager +
                 ", idCathedral=" + idCathedral +
                 ", pensum=" + pensum +
@@ -137,6 +137,4 @@ public class Employee {
                 ", change_time='" + change_time + '\'' +
                 '}';
     }
-
-
 }

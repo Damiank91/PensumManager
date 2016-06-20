@@ -28,20 +28,20 @@ public class ScheduleSubject {
         this.idEmployee = idEmployee;
     }
 
-    public int getIdSubject() {
-        return idSubject;
-    }
-
-    public void setIdSubject(int idSubject) {
-        this.idSubject = idSubject;
-    }
-
     public int getIdRoom() {
         return idRoom;
     }
 
     public void setIdRoom(int idRoom) {
         this.idRoom = idRoom;
+    }
+
+    public int getIdSubject() {
+        return idSubject;
+    }
+
+    public void setIdSubject(int idSubject) {
+        this.idSubject = idSubject;
     }
 
     public int getIdDaysWeek() {
@@ -68,16 +68,13 @@ public class ScheduleSubject {
         this.insert_time = insert_time;
     }
 
-
-    public ScheduleSubject(int idEmployee,int idRoom, int idSubject, int idDaysWeek, int idTimeWork) {
+    public ScheduleSubject(int idEmployee, int idRoom, int idSubject, int idDaysWeek, int idTimeWork) {
         this.idEmployee = idEmployee;
         this.idRoom = idRoom;
         this.idSubject = idSubject;
         this.idDaysWeek = idDaysWeek;
         this.idTimeWork = idTimeWork;
     }
-
-
 
     public ScheduleSubject(int id, int idEmployee, int idRoom, int idSubject, int idDaysWeek, int idTimeWork) {
         this.id = id;
@@ -86,7 +83,6 @@ public class ScheduleSubject {
         this.idSubject = idSubject;
         this.idDaysWeek = idDaysWeek;
         this.idTimeWork = idTimeWork;
-
     }
 
     @Override
@@ -94,9 +90,11 @@ public class ScheduleSubject {
         return "ScheduleSubject{" +
                 "id=" + id +
                 ", idEmployee=" + idEmployee +
+                ", idRoom=" + idRoom +
                 ", idSubject=" + idSubject +
                 ", idDaysWeek=" + idDaysWeek +
                 ", idTimeWork=" + idTimeWork +
+                ", insert_time='" + insert_time + '\'' +
                 '}';
     }
 }

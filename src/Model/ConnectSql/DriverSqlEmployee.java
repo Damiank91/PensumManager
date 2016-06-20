@@ -85,7 +85,7 @@ public class DriverSqlEmployee {
      */
     public void insertEmployee(Employee employee){
         String sql = "insert into pensum.pracownik" +
-                "(imie_pracownika, nazwisko_pracownika, data_urodzenia, plec, czy_Kierownik, id_katedry, pensum, insert_time)" +
+                "(imie_pracownika, nazwisko_pracownika, stopien_naukowy, stanowisko, czy_Kierownik, id_katedry, pensum, insert_time)" +
                 "values" +
                 "(?,?,?,?,?,?,?,now());";
         connectWithDataBase();
@@ -93,8 +93,8 @@ public class DriverSqlEmployee {
             preparedStatement = myConnect.prepareStatement(sql);
             preparedStatement.setString(1,employee.getName());
             preparedStatement.setString(2,employee.getSurname());
-            preparedStatement.setString(3,employee.getBirthDate());
-            preparedStatement.setString(4, String.valueOf(employee.getGender()));
+            preparedStatement.setString(3,employee.getAcademicDegree());
+            preparedStatement.setString(4, employee.getPosition());
             preparedStatement.setBoolean(5, employee.isManager());
             preparedStatement.setInt(6, employee.getIdCathedral());
             preparedStatement.setInt(7, employee.getPensum());
@@ -115,7 +115,7 @@ public class DriverSqlEmployee {
     private String createSqlQueryEmployeeSearch(Map<String, String> valueSearch){
         String sqlQuery = "select p.id_pracownika, p.imie_pracownika, p.nazwisko_pracownika, ka.nazwa_katedry " +
                 "from pensum.pracownik p " +
-                "inner join pensum.katedra ka on ka.id_katedry = p.id_katedry";
+                "left join pensum.katedra ka on ka.id_katedry = p.id_katedry";
 
         String tempKey;
         String key;
@@ -209,7 +209,7 @@ public class DriverSqlEmployee {
                         resultSet.getString(2),
                         resultSet.getString(3),
                         resultSet.getString(4),
-                        resultSet.getString(5).charAt(0),
+                        resultSet.getString(5),
                         resultSet.getBoolean(6),
                         resultSet.getInt(7),
                         resultSet.getInt(8),
@@ -233,8 +233,8 @@ public class DriverSqlEmployee {
         String sql = "update pensum.pracownik" +
                 "set imie_pracownika = ?," +
                 "nazwisko_pracownika = ?, " +
-                "data_urodzenia = ?, " +
-                "plec = ?, " +
+                "stopien_naukowy = ?, " +
+                "stanowisko = ?, " +
                 "czy_Kierownik = ?,"+
                 "id_katedry = ?," +
                 "pensum = ?," +
@@ -245,11 +245,11 @@ public class DriverSqlEmployee {
             preparedStatement = myConnect.prepareStatement(sql);
             preparedStatement.setString(1, employee.getName());
             preparedStatement.setString(2,employee.getSurname());
-            preparedStatement.setString(3, String.valueOf(employee.getGender()));
-            preparedStatement.setBoolean(4, employee.isManager());
-            preparedStatement.setInt(5, employee.getIdCathedral());
-            preparedStatement.setInt(6, employee.getPensum());
-            preparedStatement.setInt(7, employee.getIdEmploye());
+            preparedStatement.setString(3, employee.getAcademicDegree());
+            preparedStatement.setString(4, employee.getPosition());
+            preparedStatement.setBoolean(5, employee.isManager());
+            preparedStatement.setInt(6, employee.getIdCathedral());
+            preparedStatement.setInt(7, employee.getPensum());
             preparedStatement.executeUpdate();
         }catch (Exception ex){
 

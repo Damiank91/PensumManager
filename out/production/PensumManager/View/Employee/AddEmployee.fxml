@@ -25,11 +25,11 @@
                <font>
                   <Font name="System Italic" size="12.0" />
                </font></Label>
-            <Label layoutX="40.0" layoutY="165.0" text="Data urodzenia">
+            <Label layoutX="40.0" layoutY="165.0" text="Stopień naukowy">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font></Label>
-            <Label layoutX="40.0" layoutY="205.0" text="Płeć">
+            <Label layoutX="40.0" layoutY="205.0" text="Stanowisko">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font></Label>
@@ -94,20 +94,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </RadioButton>
-            <RadioButton fx:id="choiceGenderMale" contentDisplay="CENTER" layoutX="130.0" layoutY="200.0" mnemonicParsing="false" text="Mężczyzna">
-               <toggleGroup>
-                  <ToggleGroup fx:id="gender" />
-               </toggleGroup>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </RadioButton>
-            <RadioButton fx:id="choiceGenderFemale" layoutX="230.0" layoutY="200.0" mnemonicParsing="false" text="Kobieta" textAlignment="CENTER" toggleGroup="$gender">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </RadioButton>
-            <DatePicker fx:id="bornDate" layoutX="130.0" layoutY="160.0" prefWidth="190.0" />
             <Button fx:id="btnAddSubjectToTable" layoutX="425.0" layoutY="120.0" mnemonicParsing="false" onAction="#addSubjectTable" prefHeight="25.0" prefWidth="90.0" text="Dodaj">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -129,6 +115,8 @@
                 <TableColumn fx:id="subjectIdTable" prefWidth="150.0" text="Id przedmiotu" />
               </columns>
             </TableView>
+            <ChoiceBox fx:id="choiceAcademicDegree" layoutX="130.0" layoutY="163.0" prefHeight="25.0" prefWidth="190.0" />
+            <ChoiceBox fx:id="choicePosition" layoutX="130.0" layoutY="201.0" prefHeight="25.0" prefWidth="190.0" />
          </children>
       </Pane>
    </children>
