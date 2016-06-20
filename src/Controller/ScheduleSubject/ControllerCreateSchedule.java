@@ -230,10 +230,15 @@ public class ControllerCreateSchedule implements Initializable {
 
     private void saveEmployeeSchedule(){
         ScheduleSubject scheduleSubject = getChoiceSchedule();
-
+        int pensumEmployee = driverSqlEmployee.getEmployeePensumById(scheduleSubject.getIdEmployee());
         if(!(scheduleSubject.getIdDaysWeek() == 0) && !(scheduleSubject.getIdTimeWork() == 0)) {
             if(checkExistSchedule(scheduleSubject.getIdDaysWeek(), scheduleSubject.getIdTimeWork())){
-                driverSqlScheduleSubject.saveScheduleSubject(scheduleSubject);
+                if(checkNumberSchedule(scheduleSubject.getIdEmployee(),pensumEmployee)){
+                    driverSqlScheduleSubject.saveScheduleSubject(scheduleSubject);
+                } else {
+                    messagePanel.showErrorMessage("Przekroczono limit godzin dla wybranego pracownika!");
+                }
+
             } else {
                 messagePanel.showErrorMessage("Wybrany termin jest już zajęty!");
             }
@@ -276,6 +281,15 @@ public class ControllerCreateSchedule implements Initializable {
             messagePanel.showErrorMessage("Brak wyznaczonego terminu");
         }
 
+    }
+
+    private boolean checkNumberSchedule(int idEmployee, int employeePensum){
+        boolean noTooMuch = true;
+        int sumEmployeeSchedule = driverSqlScheduleSubject.getSumSchedule(idEmployee);
+        if(!((sumEmployeeSchedule*2) < employeePensum)){
+            noTooMuch = false;
+        }
+        return noTooMuch;
     }
 
 

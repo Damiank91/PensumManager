@@ -24,15 +24,14 @@ public class ControllerMainWindowDziekan implements Initializable {
     @FXML
     private Button btnScheduleList;
 
-    @FXML
-    private Button btnExit;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         btnEmployee.setOnAction(event -> Main.setSceneEmployeeWindow());
         btnScheduleList.setOnAction(event ->Main.setSceneScheduleWindow());
         btnStudents.setOnAction(event -> Main.setSceneStudentWindow());
-        btnSubjectList.setOnAction(event -> Main.setSceneScheduleWindow());
-        btnExit.setOnAction(event -> Main.setSceneMainWindow());
+        btnSubjectList.setOnAction(event -> Main.setSceneSubjectWindow());
+
     }
 }

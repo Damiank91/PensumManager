@@ -224,6 +224,31 @@ public class DriverSqlEmployee {
         return employee;
     }
 
+    /**
+     * metoda pobiera z bazy pracownika po jego id
+     * @param idEmployee
+     * @return
+     */
+    public int getEmployeePensumById(int idEmployee){
+        Employee employee = null;
+        String sql = "select pensum from pracownik where id_pracownika = ?";
+        int employeePensum = 0;
+        connectWithDataBase();
+        try{
+            preparedStatement = myConnect.prepareStatement(sql);
+            preparedStatement.setInt(1, idEmployee);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                employeePensum = resultSet.getInt(1);
+            }
+        }catch (Exception ex){
+            System.out.println(ex);
+        }finally {
+            closeDriverSql();
+        }
+        return employeePensum;
+    }
+
 
     /**
      * Metoda aktualizująca dane pracownika w bazie

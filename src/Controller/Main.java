@@ -26,9 +26,7 @@ public class Main extends Application {
     private Parent parentSearchEmployeeWindowPane;
 
     //mainWindow
-    private Parent parentMainWindow;
     private Parent parentMainWindowDziekan;
-    private Parent parentMainWindowKierownik;
 
 
     //student
@@ -48,9 +46,7 @@ public class Main extends Application {
     //okno w ktorym znajduje sie layout
 
     //mainWindow
-    private static Scene sceneMainWindow;
     private static Scene sceneMainWindowDziekan;
-    private static Scene sceneMainWindowKierownik;
 
     //emplyee
     private static Scene sceneEmployeeWindow;
@@ -78,9 +74,7 @@ public class Main extends Application {
         initializeParent();
 
         //mainWindow
-        sceneMainWindow = new Scene(parentMainWindow);
         sceneMainWindowDziekan = new Scene(parentMainWindowDziekan);
-        sceneMainWindowKierownik = new Scene(parentMainWindowKierownik);
 
         //Emloyee
         sceneEmployeeWindow = new Scene(parentEmployeeWindowPane);
@@ -101,7 +95,7 @@ public class Main extends Application {
         sceneAddStubjectWindow = new Scene(parentAddSubjectWindowPane);
         sceneSearchSubjectWindow = new Scene(parentSearchSubjectWindowPane);
 
-        window.setScene(sceneMainWindow); // ustaw sceneMainWindow na koniec
+        window.setScene(sceneMainWindowDziekan); // ustaw sceneMainWindow na koniec
         window.setTitle(APP_NAME);
         window.show();
 
@@ -111,8 +105,6 @@ public class Main extends Application {
     private void initializeParent(){
         try{
             //main
-            parentMainWindow = (Parent) FXMLLoader.load(getClass().getResource("/View/MainWindowPane.fxml"));
-            parentMainWindowKierownik = (Parent) FXMLLoader.load(getClass().getResource("/View/MainWindowPaneKierownik.fxml"));
             parentMainWindowDziekan = (Parent) FXMLLoader.load(getClass().getResource("/View/MainWindowPaneDziekan.fxml"));
 
             //employee
@@ -141,7 +133,7 @@ public class Main extends Application {
 
     //main window
     public static void setSceneMainWindow(){
-        window.setScene(sceneMainWindow);
+        window.setScene(sceneMainWindowDziekan);
         window.setX(220);
         window.setY(100);
     }
@@ -150,9 +142,6 @@ public class Main extends Application {
         window.setScene(sceneMainWindowDziekan);
     }
 
-    public static void setSceneMainWindowKierownik(){
-        window.setScene(sceneMainWindowKierownik);
-    }
 
     //employee windows
     public static void setSceneEmployeeWindow(){

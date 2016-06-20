@@ -113,6 +113,26 @@ public class DriverSqlScheduleSubject {
         }
     }
 
+    public int getSumSchedule(int idEmployee){
+        String sql = "select count(*) from pensum.plan_zajec where id_pracownika = ?";
+        int sumSchedule = 0;
+        connectWithDataBase();
+        try{
+            preparedStatement = myConnect.prepareStatement(sql);
+            preparedStatement.setInt(1, idEmployee);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                sumSchedule = resultSet.getInt(1);
+            }
+        } catch (Exception ex){
+
+        }finally {
+            closeDriverSql();
+        }
+
+        return  sumSchedule;
+    }
+
     public int checkIsExist(int idDay, int idTime){
         String sql = "select id from pensum.plan_zajec where id_dnia_tygodnia = ? and id_godziny = ?";
         connectWithDataBase();

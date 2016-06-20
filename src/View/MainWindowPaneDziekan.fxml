@@ -28,11 +28,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="241.0" layoutY="35.0" prefHeight="37.0" prefWidth="89.0" text="Witaj">
+      <Label layoutX="82.0" layoutY="33.0" prefHeight="37.0" prefWidth="437.0" text="Szkoła Główna Gospodarstwa Wiejskiego">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnExit" layoutX="260.0" layoutY="311.0" mnemonicParsing="false" text="Wyjdź" />
    </children>
 </Pane>
