@@ -110,6 +110,9 @@ public class ControllerAddEmployee implements Initializable {
     ArrayList<String> cathedralListChoiceBox = new ArrayList<>();
     ArrayList<Subject> subjectArrayList = new ArrayList<>();
 
+    /**
+     * initialize method
+     */
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
